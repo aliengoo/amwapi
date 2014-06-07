@@ -1,0 +1,47 @@
+{
+  "name": "NgTemplate",
+  "version": "0.0.1",
+  "authors": [
+    "@phooby"
+  ],
+  "description": "AngularJS Web API Template",
+  "keywords": [
+    "angular",
+    "web",
+    "api"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amplify": "~1.1.2",
+    "angular-animate": "~1.2.16",
+    "angular-bootstrap": "~0.10.0",
+    "angular-cookies": "~1.2.16",
+    "angular-resource": "~1.2.16",
+    "angular-i18n": "~1.2.16",
+    "angular-ui-utils": "~0.1.1",
+    "angular-ui-router": "~0.2.10",
+    "animate.css": "~3.1.1",
+    "bootstrap": "~3.1.1",
+    "font-awesome": "~4.0.3",
+    "lodash": "~2.4.1",
+    "modernizr": "~2.7.2",
+    "momentjs": "~2.6.0",
+    "stringjs": "~1.8.0",
+    "toastr": "~2.0.1",
+    "ng-Fx": "~0.3.2",
+    "greensock": "~1.11.6",
+    "angular-socket-io": "~0.6.0",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.1.0",
+    "angular-loading-bar": "~0.4.1",
+    "angular-local-storage": "~0.0.3",
+    "signalr": "~2.0.3"
+  }
+}
