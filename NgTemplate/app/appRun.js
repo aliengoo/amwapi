@@ -2,9 +2,7 @@
 
   "use strict";
 
-  app.run([function(){
-
-    // TODO : Run
+  app.run(['$rootScope', 'signalRSvc', function ($rootScope, signalRSvc) {
 
   }]);
 }());

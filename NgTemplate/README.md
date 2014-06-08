@@ -1,6 +1,4 @@
-# NgTemplate
-
-A Visual Studio project template.
+# A Visual Studio project template.
 
 ## AngularJS, MongoDB and Web API
 

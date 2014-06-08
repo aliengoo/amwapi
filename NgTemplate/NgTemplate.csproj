@@ -111,12 +111,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\services\signalRSvc.js" />
+    <Content Include="Check_Local_IIS_Project_URL.txt" />
     <Content Include="packages.config" />
     <Content Include=".bowerrc" />
     <Content Include="package.json" />
     <Content Include="bower.json" />
     <Content Include="less\style.less" />
     <Content Include=".gitignore" />
+    <Content Include="README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,7 +153,6 @@
     <Folder Include="app\common\controllers\" />
     <Folder Include="app\common\directives\" />
     <Folder Include="app\common\filters\" />
-    <Folder Include="app\common\services\" />
     <Folder Include="public\" />
   </ItemGroup>
   <PropertyGroup>

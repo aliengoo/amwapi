@@ -2,14 +2,16 @@
 
   "use strict";
 
-  app.controller('homeCtrl', ['$scope', 'signalRSvc', function ($scope, signalRSvc) {
-    signalRSvc.initialize();
-
-    signalRSvc.greetAll();
-
+  app.controller('homeCtrl', ['$rootScope', '$scope', 'helloWorldHub', function ($rootScope, $scope, helloWorldHub) {
     $scope.$on('acceptGreet', function (ev, message) {
-      console.log(message);
+      $scope.message = message || 'No message';
     });
+
+    helloWorldHub.init().then(function (hub) {
+      hub.greetAll();
+    });
+
+
   }]);
 
 }());

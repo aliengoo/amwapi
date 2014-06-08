@@ -2,34 +2,54 @@
 
   "use strict";
 
-  app.service('signalRSvc', function ($, $rootScope) {
-    var proxy = null;
+  app.factory('signalRSvc', ['$rootScope', '$log', '$q', function ($rootScope, $log, $q) {
 
-    var initialize = function () {
-      //Getting the connection object
-      window.connection = $.hubConnection();
+    var connection = $.hubConnection('signalR');
 
-      //Creating proxy
-      this.proxy = connection.createHubProxy('helloWorldHub');
+    connection.logging = true;
 
-      //Starting connection
-      connection.start();
+    var hubs = {};
 
-      //Publishing an event when server pushes a greeting message
-      this.proxy.on('acceptGreet', function (message) {
-        $rootScope.$emit("acceptGreet",message);
-      });
-    };
+    var that = {
+      hubs : {},
+      start : function(){
+        var d = $q.defer();
 
-    var greetAll = function () {
-      //Invoking greetAll method defined in hub
-      this.proxy.invoke('greetAll');
+        //Starting connection
+        connection.start().done(function () {
+          d.resolve(connection);
+        }).fail(function (err) {
+          d.reject(err);
+        });
+
+        return d.promise;
+      },
+      addHub: function (hubName, extend) {
+
+        hubs[hubName] = connection.createHubProxy(hubName);
+
+        extend(hubs[hubName]);
+
+        if ($.signalR.connectionState.connected){
+          connection.stop();
+        }
+
+        var d = $q.defer();
+
+        this.start().then(function(){
+          d.resolve(hubs[hubName]);
+        }, function(error) {
+          d.reject(error);
+        });
+
+        return d.promise;
+      }
     };
 
     return {
-      initialize: initialize,
-      greetAll: greetAll
+      start : that.start,
+      addHub : that.addHub
     };
-  });
+  }]);
 
 }());

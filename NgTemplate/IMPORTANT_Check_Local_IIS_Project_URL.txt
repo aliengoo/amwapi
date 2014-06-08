@@ -1,0 +1,1 @@
+﻿By default, this is set to NgTemplate, change it to match the project name.

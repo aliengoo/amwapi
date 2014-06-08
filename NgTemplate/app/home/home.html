@@ -1,5 +1,6 @@
 <div class="container">
   <header>
-    <h1>Home</h1>
+    <h1 ng-hide="message">Waiting for message</h1>
+    <h1 ng-show="message">Hello, {{message}}</h1>
   </header>
 </div>
