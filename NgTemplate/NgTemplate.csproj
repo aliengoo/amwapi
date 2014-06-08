@@ -21,6 +21,8 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <ExcludeFilesFromDeployment>README.md;packages.config;package.json;Gruntfile.js;bower.json;.gitignore;.bowerrc</ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>app;less</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeFilesFromDeployment>README.md;packages.config;package.json;Gruntfile.js;bower.json;.gitignore;.bowerrc</ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>app;less</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +42,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeFilesFromDeployment>README.md;packages.config;package.json;Gruntfile.js;bower.json;.gitignore;.bowerrc</ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>app;less</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
@@ -113,7 +119,6 @@
   <ItemGroup>
     <Content Include="app\common\services\helloWorldHub.js" />
     <Content Include="app\common\services\signalRSvc.js" />
-    <Content Include="IMPORTANT_Check_Local_IIS_Project_URL.txt" />
     <Content Include="packages.config" />
     <Content Include=".bowerrc" />
     <Content Include="package.json" />
@@ -121,6 +126,7 @@
     <Content Include="less\style.less" />
     <Content Include=".gitignore" />
     <Content Include="public\fonts\fontawesome-webfont.svg" />
+    <Content Include="public\html\home\home.html" />
     <Content Include="public\js\app.concat.js" />
     <Content Include="public\js\vendor-body.js" />
     <Content Include="public\js\vendor-header.js" />
@@ -130,10 +136,18 @@
     <Content Include="public\fonts\fontawesome-webfont.ttf" />
     <Content Include="public\fonts\fontawesome-webfont.woff" />
     <Content Include="public\fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\dev.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <None Include="Web.Dev.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
@@ -167,6 +181,28 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeFilesFromDeployment>README.md;packages.config;package.json;Gruntfile.js;bower.json;.gitignore;.bowerrc</ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>app;less</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeFilesFromDeployment>README.md;packages.config;package.json;Gruntfile.js;bower.json;.gitignore;.bowerrc</ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>app;less</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

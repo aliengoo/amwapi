@@ -162,6 +162,8 @@ public/js
 public/html
 public/fonts
 public/styles
+.idea
+builds/
 
 
 
