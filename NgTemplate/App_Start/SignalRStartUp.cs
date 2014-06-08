@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(NgTemplate.App_Start.SignalRStartUp))]
+[assembly: OwinStartup(typeof($safeprojectname$.App_Start.SignalRStartUp))]
 
-namespace NgTemplate.App_Start
+namespace $safeprojectname$.App_Start
 {
     public class SignalRStartUp
     {
