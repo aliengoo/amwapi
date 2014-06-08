@@ -24,7 +24,14 @@
 
         return d.promise;
       },
-      addHub: function (hubName, extend) {
+      create: function (hubName, extend) {
+        if (hubs.hasOwnProperty(hubName)){
+          return $q.when(hubs[hubName]);
+        }
+
+        if (!extend) {
+          throw Error("extend argument required");
+        }
 
         hubs[hubName] = connection.createHubProxy(hubName);
 
@@ -48,7 +55,7 @@
 
     return {
       start : that.start,
-      addHub : that.addHub
+      create : that.create
     };
   }]);
 

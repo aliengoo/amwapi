@@ -14,7 +14,7 @@
         var d = $q.defer();
 
         if (!self.that) {
-          signalRSvc.addHub('helloWorldHub', function(hub){
+          signalRSvc.create('helloWorldHub', function(hub){
 
             // TODO : methods and handlers get added here...
             hub.on('acceptGreet', function (message) {

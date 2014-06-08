@@ -6,7 +6,7 @@
     {
         public void GreetAll()
         {
-            Clients.Caller.acceptGreet("Hello, all");
+            Clients.All.acceptGreet("Hello, SignalR");
         }
     }
 }

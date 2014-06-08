@@ -111,15 +111,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\services\helloWorldHub.js" />
     <Content Include="app\common\services\signalRSvc.js" />
-    <Content Include="Check_Local_IIS_Project_URL.txt" />
+    <Content Include="IMPORTANT_Check_Local_IIS_Project_URL.txt" />
     <Content Include="packages.config" />
     <Content Include=".bowerrc" />
     <Content Include="package.json" />
     <Content Include="bower.json" />
     <Content Include="less\style.less" />
     <Content Include=".gitignore" />
+    <Content Include="public\fonts\fontawesome-webfont.svg" />
+    <Content Include="public\js\app.concat.js" />
+    <Content Include="public\js\vendor-body.js" />
+    <Content Include="public\js\vendor-header.js" />
+    <Content Include="public\styles\style.min.css" />
     <Content Include="README.md" />
+    <Content Include="public\fonts\fontawesome-webfont.eot" />
+    <Content Include="public\fonts\fontawesome-webfont.ttf" />
+    <Content Include="public\fonts\fontawesome-webfont.woff" />
+    <Content Include="public\fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -153,7 +163,6 @@
     <Folder Include="app\common\controllers\" />
     <Folder Include="app\common\directives\" />
     <Folder Include="app\common\filters\" />
-    <Folder Include="public\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

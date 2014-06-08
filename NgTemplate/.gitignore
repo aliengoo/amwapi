@@ -159,6 +159,7 @@ less/*.css
 bower/
 node_modules/
 public/js
+public/html
 public/fonts
 public/styles
 

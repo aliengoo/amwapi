@@ -39,7 +39,7 @@
 
     $stateProvider.state('home', {
       url: '/home',
-      templateUrl: 'app/home/home.html',
+      templateUrl: 'public/html/home/home.html',
       controller: 'homeCtrl'
     });
   }]);
