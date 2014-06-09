@@ -16,6 +16,8 @@ build/
 [Oo]bj/
 
 !.nuget/NuGet.exe
+!.nuget/NuGet.Config
+!.nuget/NuGet.targets
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
