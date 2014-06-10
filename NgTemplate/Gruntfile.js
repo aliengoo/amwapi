@@ -77,7 +77,7 @@
           {
             expand: true,
             cwd: 'app',
-            src: ['**/*.html', '**/**/*.html', '**/**/**/*.html'],
+            src: ['**/*.html', '**/**/*.html', '**/**/**/*.html', '**/**/**/**/*.html'],
             dest: 'public/html/',
             flatten: false,
             filter: 'isFile'
@@ -87,7 +87,7 @@
     },
     jshint: {
       // define the files to lint
-      files: ['Gruntfile.js', 'app/*.js', 'app/**/*.js', 'app/**/**/*.js', 'app/**/**/**/*.js'],
+      files: ['app/*.js', 'app/**/*.js', 'app/**/**/*.js', 'app/**/**/**/*.js'],
       // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
         // more options here if you want to override JSHint defaults
@@ -111,6 +111,14 @@
       }
     },
     watch: {
+      grunt: {
+        files: 'Gruntfile.js',
+        tasks: ['uglify'],
+        options: {
+          interrupt: true,
+          livereload: true
+        }
+      },
       app: {
         files: '<%= jshint.files %>',
         tasks: ['jshint', 'concat:app'],
