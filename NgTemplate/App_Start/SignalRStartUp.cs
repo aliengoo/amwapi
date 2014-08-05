@@ -9,7 +9,10 @@ namespace NgTemplate.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
-            app.MapSignalR();
+            app.MapSignalR(new HubConfiguration
+								{
+									EnableDetailedErrors = true
+								});
         }
     }
 }
