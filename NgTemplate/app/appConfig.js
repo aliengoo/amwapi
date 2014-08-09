@@ -4,12 +4,14 @@
     '$stateProvider',
     '$urlRouterProvider',
     'cfpLoadingBarProvider',
-    'localStorageServiceProvider', function (
+    'localStorageServiceProvider',
+    'blockUIConfigProvider', function (
       $provide,
       $stateProvider,
       $urlRouterProvider,
       cfpLoadingBarProvider,
-      localStorageServiceProvider) {
+      localStorageServiceProvider,
+      blockUIConfigProvider) {
 
     // TODO : Uncomment to disable the spinner
     //cfpLoadingBarProvider.includeSpinner = false;
@@ -17,6 +19,8 @@
 
     // TODO : Set the prefix for local storage
     // localStorageServiceProvider.setPrefix('newPrefix');
+
+    blockUIConfigProvider.message('working...');
 
     // TODO : Handle uncaught exceptions here
     $provide.decorator("$exceptionHandler", ['$delegate', '$injector', function ($delegate, $injector) {
@@ -37,9 +41,11 @@
     // TODO : Specify some routes
     $urlRouterProvider.otherwise('/home');
 
+    
+
     $stateProvider.state('home', {
       url: '/home',
-      templateUrl: 'public/html/home/home.html',
+      templateUrl: 'home/home.html',
       controller: 'homeCtrl'
     });
   }]);

@@ -13,6 +13,16 @@
         }
       }
     },
+    ngtemplates: {
+      app: {
+        cwd: 'app',
+        src: ['**/*.html', '**/**/*.html', '**/**/**/*.html', '**/**/**/**/*.html'],
+        dest: 'public/js/app.templates.js',
+        options: {
+          htmlmin: { collapseWhitespace: true, collapseBooleanAttributes: true }
+        }
+      }
+    },
     cssmin: {
       combine: {
         files: {
@@ -23,6 +33,10 @@
             'bower/angular-loading-bar/build/loading-bar.min.css',
             'bower/bootstrap/less/bootstrap.css',
             'bower/font-awesome/less/font-awesome.css',
+            'bower/select2/select2.css',
+            'bower/select2-bootstrap3-css/select2-bootstrap.css',
+            'bower/angular-ui-select2/docs/styles.css',
+            'bower/angular-block-ui/angular-block-ui.min.css',
             'less/style.css'
           ]
         }
@@ -35,6 +49,7 @@
       },
       vendor_body: {
         src: [
+          'bower/raven-js/dist/raven.min.js',
           'bower/jquery/dist/jquery.min.js',
           'bower/lodash/dist/lodash.min.js',
           'bower/momentjs/min/moment.min.js',
@@ -54,7 +69,10 @@
           'bower/angular-loading-bar/build/loading-bar.min.js',
           'bower/angular-hotkeys/build/hotkeys.min.js',
           'bower/angular-local-storage/angular-local-storage.min.js',
-          'bower/signalr/jquery.signalR.min.js'
+          'bower/signalr/jquery.signalR.min.js',
+          'bower/select2/select2.min.js',
+          'bower/angular-ui-select2/src/select2.js',
+          'bower/angular-block-ui/angular-block-ui.min.js'
         ],
         dest: 'public/js/vendor-body.js'
       }
@@ -72,13 +90,13 @@
           }
         ]
       },
-      appHtml: {
+      select2_images: {
         files: [
           {
             expand: true,
-            cwd: 'app',
-            src: ['**/*.html', '**/**/*.html', '**/**/**/*.html', '**/**/**/**/*.html'],
-            dest: 'public/html/',
+            cwd: 'bower/select2',
+            src: ['**/*.png', '**/*.gif'],
+            dest: 'public/styles/',
             flatten: false,
             filter: 'isFile'
           }
@@ -113,7 +131,7 @@
     watch: {
       grunt: {
         files: 'Gruntfile.js',
-        tasks: ['uglify'],
+        tasks: ['jshint', 'ngtemplates', 'concat:app', 'uglify', 'less:app', 'copy', 'cssmin'],
         options: {
           interrupt: true,
           livereload: true
@@ -131,7 +149,7 @@
         files: [
           'public/index.html', 'app/*.html', 'app/**/*.html', 'app/**/**/*.html', 'app/**/**/**/*.html'
         ],
-        tasks: ['copy:appHtml'],
+        tasks: ['ngtemplates'],
         options: {
           interrupt: true,
           livereload: true
@@ -171,6 +189,7 @@
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-angular-templates');
 
-  grunt.registerTask('default', ['jshint', 'concat:app', 'uglify', 'less:app', 'copy', 'cssmin', 'watch']);
+  grunt.registerTask('default', ['jshint', 'ngtemplates', 'concat:app', 'uglify', 'less:app', 'copy', 'cssmin', 'watch']);
 };

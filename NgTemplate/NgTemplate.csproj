@@ -14,7 +14,7 @@
     <RootNamespace>NgTemplate</RootNamespace>
     <AssemblyName>NgTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -126,7 +126,6 @@
     <Content Include="less\style.less" />
     <Content Include=".gitignore" />
     <Content Include="public\fonts\fontawesome-webfont.svg" />
-    <Content Include="public\html\home\home.html" />
     <Content Include="public\js\app.concat.js" />
     <Content Include="public\js\vendor-body.js" />
     <Content Include="public\js\vendor-header.js" />
