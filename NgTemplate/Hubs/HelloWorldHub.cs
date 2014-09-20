@@ -1,12 +1,14 @@
 ﻿namespace NgTemplate.Hubs
 {
+    using System.Diagnostics;
+
     using Microsoft.AspNet.SignalR;
 
     public class HelloWorldHub : Hub
     {
         public void GreetAll()
         {
-            Clients.All.acceptGreet("Hello, SignalR");
+            Clients.Caller.acceptGreet("SignalR is working, Yay!");
         }
     }
 }

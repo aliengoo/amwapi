@@ -5,6 +5,8 @@ using Owin;
 
 namespace NgTemplate.App_Start
 {
+    using Microsoft.AspNet.SignalR;
+
     public class SignalRStartUp
     {
         public void Configuration(IAppBuilder app)

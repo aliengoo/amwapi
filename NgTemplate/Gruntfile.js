@@ -1,15 +1,54 @@
 ﻿module.exports = function (grunt) {
 
-  grunt.initConfig({
+  var vendor_body = [
+    'bower/jquery/dist/jquery.min.js',
+    'bower/lodash/dist/lodash.min.js',
+    'bower/momentjs/min/moment.min.js',
+    'bower/stringjs/lib/string.min.js',
+    'bower/toastr/toastr.min.js',
+    'bower/angular/angular.min.js',
+    'bower/angular-i18n/angular-locale_en-gb.js',
+    'bower/angular-animate/angular-animate.min.js',
+    'bower/angular-cookies/angular-cookies.min.js',
+    'bower/angular-resource/angular-resource.min.js',
+    'bower/angular-ui-utils/ui-utils.min.js',
+    'bower/angular-ui-router/release/angular-ui-router.min.js',
+    'bower/angular-bootstrap/ui-bootstrap-tpls.min.js',
+    'bower/greensock/src/minified/TweenMax.min.js',
+    'bower/ng-Fx/dist/ngFx.min.js',
+    'bower/angular-loading-bar/build/loading-bar.min.js',
+    'bower/angular-hotkeys/build/hotkeys.min.js',
+    'bower/angular-local-storage/angular-local-storage.min.js',
+    'bower/signalr/jquery.signalR.min.js',
+    'bower/select2/select2.min.js',
+    'bower/angular-ui-select2/src/select2.js',
+    'bower/angular-block-ui/dist/angular-block-ui.min.js'
+  ];
+
+    grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     concat: {
       options: {
-        separator: ';',
+        separator: ';\n',
         stripBanners: true
       },
       app: {
         files: {
           'public/js/app.concat.js': ['app/*.js', 'app/**/*.js', 'app/**/**/*.js', 'app/**/**/**/*.js']
+        }
+      },
+      // remember - use the MINIFIED versions of the files
+      vendor_body: {
+        files: {
+          'public/js/vendor-body.js': vendor_body
+        }
+      },
+      vendor_header: {
+        files: {
+          'public/js/vendor-header.js': [
+            'bower/modernizr/modernizr.js'
+          ]
         }
       }
     },
@@ -42,47 +81,20 @@
         }
       }
     },
-    uglify: {
-      vendor_header: {
-        src: ['bower/modernizr/modernizr.js'],
-        dest: 'public/js/vendor-header.js'
-      },
-      vendor_body: {
-        src: [
-          'bower/raven-js/dist/raven.min.js',
-          'bower/jquery/dist/jquery.min.js',
-          'bower/lodash/dist/lodash.min.js',
-          'bower/momentjs/min/moment.min.js',
-          'bower/stringjs/lib/string.min.js',
-          'bower/toastr/toastr.min.js',
-          'bower/angular/angular.min.js',
-          'bower/angular-i18n/angular-locale_en-gb.js',
-          'bower/angular-animate/angular-animate.min.js',
-          'bower/angular-cookies/angular-cookies.min.js',
-          'bower/angular-resource/angular-resource.min.js',
-          'bower/angular-socket-io/socket.min.js',
-          'bower/angular-ui-utils/ui-utils.min.js',
-          'bower/angular-ui-router/release/angular-ui-router.min.js',
-          'bower/angular-bootstrap/ui-bootstrap-tpls.min.js',
-          'bower/greensock/src/minified/TweenMax.min.js',
-          'bower/ng-Fx/dist/ng-Fx.min.js',
-          'bower/angular-loading-bar/build/loading-bar.min.js',
-          'bower/angular-hotkeys/build/hotkeys.min.js',
-          'bower/angular-local-storage/angular-local-storage.min.js',
-          'bower/signalr/jquery.signalR.min.js',
-          'bower/select2/select2.min.js',
-          'bower/angular-ui-select2/src/select2.js',
-          'bower/angular-block-ui/angular-block-ui.min.js'
-        ],
-        dest: 'public/js/vendor-body.js'
-      }
-    },
     copy: {
       fonts: {
         files: [
           {
             expand: true,
             cwd: 'bower/font-awesome/fonts/',
+            src: ['**'],
+            dest: 'public/fonts/',
+            flatten: true,
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            cwd: 'bower/bootstrap/dist/fonts/',
             src: ['**'],
             dest: 'public/fonts/',
             flatten: true,
@@ -128,10 +140,27 @@
         }
       }
     },
+    concurrent: {
+      preFlight: {
+        tasks: ['jshint', 'less:app'],
+        options: {
+          logConcurrentOutput: true
+        }
+      },
+      liftOff: {
+        tasks: ['copy', 'cssmin', 'concat:vendor_header', 'concat:vendor_body', 'concat:app', 'ngtemplates'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
+    fileExists : {
+      scripts : vendor_body
+    },
     watch: {
       grunt: {
         files: 'Gruntfile.js',
-        tasks: ['jshint', 'ngtemplates', 'concat:app', 'uglify', 'less:app', 'copy', 'cssmin'],
+        tasks: ['concurrent:preFlight', 'concurrent:liftOff'],
         options: {
           interrupt: true,
           livereload: true
@@ -147,7 +176,7 @@
       },
       html: {
         files: [
-          'public/index.html', 'app/*.html', 'app/**/*.html', 'app/**/**/*.html', 'app/**/**/**/*.html'
+          'index.html', 'app/*.html', 'app/**/*.html', 'app/**/**/*.html', 'app/**/**/**/*.html'
         ],
         tasks: ['ngtemplates'],
         options: {
@@ -156,16 +185,16 @@
         }
       },
       vendor_header: {
-        files: '<%= uglify.vendor_header.src %>',
-        tasks: ['uglify:vendor_header'],
+        files: '<%= concat.vendor_header.files %>',
+        tasks: ['concat:vendor_header'],
         options: {
           interrupt: true,
           livereload: true
         }
       },
       vendor_body: {
-        files: '<%= uglify.vendor_body.src %>',
-        tasks: ['uglify:vendor_body'],
+        files: '<%= concat.vendor_body.files %>',
+        tasks: ['concat:vendor_body'],
         options: {
           interrupt: true,
           livereload: true
@@ -190,6 +219,8 @@
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-angular-templates');
+  grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-file-exists');
 
-  grunt.registerTask('default', ['jshint', 'ngtemplates', 'concat:app', 'uglify', 'less:app', 'copy', 'cssmin', 'watch']);
+  grunt.registerTask('default', ['fileExists', 'concurrent:preFlight', 'concurrent:liftOff', 'watch']);
 };
