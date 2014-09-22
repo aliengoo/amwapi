@@ -6,7 +6,8 @@
     var template =
       '<div class="form-group" ng-class="{\'has-error\' : hasError, \'has-success\' : hasSuccess}">' +
         '<label class="control-label">#{label}</label>' +
-        '<input type="text" class="form-control #{class}" name="#{name}" ng-model="#{bindTo}" #{ngRequiredAttr}>' +
+        '<input type="text" class="form-control #{class}" name="#{name}" ng-model="#{bindTo}" #{validationAttr}>' +
+        '#{helpBlocks}' +
       '</div>';
 
 
@@ -15,25 +16,44 @@
       restrict: 'E',
       require: '^form',
       compile : function($el, $attrs){
+
+        // build
         var data = {
           "label" : $attrs.label,
           "class" : $attrs.class || '',
           "name" : $attrs.name,
-          "bindTo" : $attrs.bindTo
+          "bindTo" : $attrs.bindTo,
+          "validationAttr" : ''
         };
 
-        if ($attrs.hasOwnProperty('mandatory')) {
-          data.ngRequiredAttr = "ng-required='"+ $attrs.mandatory + "'";
-        }
+        // validation attributes
+        var validationOptions = ['required', 'minlength', 'maxlength', 'max', 'min'];
+
+        angular.forEach(validationOptions, function(property) {
+          if ($attrs.hasOwnProperty(property)){
+            data.validationAttr += "ng-" + property + "='" + $attrs[property] + "' ";
+          }
+        });
+
+        // help blocks
+        var helpBlocks = $el.find('help-block');
+
+        angular.forEach(helpBlocks, function (helpBlock) {
+          var helpBlock = angular.element(helpBlock);
+        });
 
         var html = S(template).template(data, '#{', '}').s;
 
-        $el.removeAttr('class');
-        $el.removeAttr('bind-to');
-        $el.removeAttr('name');
-        $el.removeAttr('mandatory');
-        $el.removeAttr('label');
+        // clean up parent element
+        angular.forEach(['class', 'bind-to', 'name', 'label'], function (attr) {
+          $el.removeAttr(attr);
+        });
 
+        angular.forEach(validationOptions, function (attr) {
+          $el.removeAttr(attr);
+        });
+
+        // swap it out
         $el.html(html);
 
         return function ($scope, $elem, $attrs, form) {
