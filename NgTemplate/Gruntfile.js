@@ -223,4 +223,5 @@
   grunt.loadNpmTasks('grunt-file-exists');
 
   grunt.registerTask('default', ['fileExists', 'concurrent:preFlight', 'concurrent:liftOff', 'watch']);
+  grunt.registerTask('defaultWatchless', ['fileExists', 'concurrent:preFlight', 'concurrent:liftOff']);
 };

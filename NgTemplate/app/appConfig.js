@@ -45,8 +45,12 @@
 
     $stateProvider.state('home', {
       url: '/home',
-      templateUrl: 'home/home.html',
+      templateUrl: 'views/home/home.html',
       controller: 'homeCtrl'
+    }).state('bootstrap-directives', {
+      url: '/bootstrap-directives',
+      templateUrl: 'views/bootstrap-directives/bootstrap-directives.html',
+      controller: 'bootstrapDirectivesCtrl'
     });
   }]);
 }());
