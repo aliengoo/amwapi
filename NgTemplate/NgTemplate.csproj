@@ -124,10 +124,13 @@
     <Content Include="app\app.js" />
     <Content Include="app\appConfig.js" />
     <Content Include="app\appRun.js" />
+    <Content Include="app\bootstrap\directives\fg-input\fg-input.js" />
     <Content Include="app\common\services\helloWorldHub.js" />
     <Content Include="app\common\services\signalRSvc.js" />
-    <Content Include="app\home\home.html" />
-    <Content Include="app\home\homeCtrl.js" />
+    <Content Include="app\views\bootstrap-directives\bootstrap-directives.html" />
+    <Content Include="app\views\bootstrap-directives\bootstrapDirectivesCtrl.js" />
+    <Content Include="app\views\home\home.html" />
+    <Content Include="app\views\home\homeCtrl.js" />
     <Content Include="bower.json" />
     <Content Include="less\style.less" />
     <Content Include="packages.config" />
@@ -186,6 +189,7 @@
     <Folder Include="app\common\controllers\" />
     <Folder Include="app\common\directives\" />
     <Folder Include="app\common\filters\" />
+    <Folder Include="app\home\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
