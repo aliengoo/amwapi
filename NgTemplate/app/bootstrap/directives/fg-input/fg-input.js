@@ -122,12 +122,14 @@
             return input.$valid && input.$dirty;
           };
 
-          $s.$watch(function () {
+          var startupWatch = $s.$watch(function () {
             return input.$modelValue;
           }, function(n, o){
             if (input.$pristine && n && n.length > 0) {
               input.$dirty = true;
               input.$pristine = false;
+
+              startupWatch();
             }
           });
         };
