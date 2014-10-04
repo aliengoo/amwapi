@@ -4,7 +4,6 @@
   window.app.controller('bootstrapDirectivesCtrl', ['$scope', function ($scope) {
 
     $scope.data = {
-      firstName : "efwefwef"
     };
 
 

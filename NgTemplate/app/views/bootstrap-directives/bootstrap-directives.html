@@ -1,22 +1,59 @@
 <div class="container">
+  <header class="page-header">
+    <h1><code>fg-*</code> Demo</h1>
+  </header>
   <form name="f" novalidate>
-    <div class="panel" ng-class="{'panel-success' : f.$valid, 'panel-danger' : f.$invalid && f.$dirty, 'panel-default' : f.$invalid && f.$pristine}">
-      <header class="panel-heading">
-          <h3>fg-input</h3>
+    <fg-select name="title" ng-model="data.title" class="small" ng-required="true">
+      <label ng-show="title.$pristine">Title</label>
+      <label ng-show="title.$dirty">Title <i class="fa"
+                                                      ng-class="{'fa-close' : title.$invalid && title.$dirty, 'fa-check' : title.$valid && title.$dirty}"></i></label>
+      
+      <option value="Mr">Mr</option>
+      <option value="Mrs">Mrs</option>
+      <option value="Miss">Miss</option>
+      <option value="Ms">Ms</option>
 
-      </header>
-      <div class="panel-body">
-        <fg-input type="text" name="firstName" ng-model="data.firstName" class="small" ng-minlength="5" maxlength="30" ng-required="true" placeholder="e.g. Fred">
-          <label ng-show="firstName.$pristine">First name</label>
-          <label ng-show="firstName.$dirty">First name <i class="fa" ng-class="{'fa-close' : firstName.$invalid && firstName.$dirty, 'fa-check' : firstName.$valid && firstName.$dirty}"></i></label>
-          <help-block ng-show="firstName.$invalid && firstName.$dirty">Sorry, the value is not valid.</help-block>
-          <help-block ng-show="firstName.$pristine">Please enter your first name</help-block>
-          <help-block ng-show="firstName.$valid && firstName.$dirty && firstName.$viewValue.length > 0">Thank you</help-block>
-        </fg-input>
+      <help-block ng-show="title.$invalid && title.$dirty">Sorry, the value is not valid.</help-block>
+      <help-block ng-show="title.$pristine">Please select a title</help-block>
+      <help-block ng-show="title.$valid && title.$dirty && title.$viewValue.length > 0">Thank you
+      </help-block>
+    </fg-select>
 
-        <pre>First name: {{data.firstName}}</pre>
-      </div>
+    <fg-input type="text" name="firstName" ng-model="data.firstName" class="small" ng-minlength="5" maxlength="30"
+              ng-required="true" placeholder="e.g. Fred">
+      <label ng-show="firstName.$pristine">First name</label>
+      <label ng-show="firstName.$dirty">First name <i class="fa"
+                                                      ng-class="{'fa-close' : firstName.$invalid && firstName.$dirty, 'fa-check' : firstName.$valid && firstName.$dirty}"></i></label>
+      <help-block ng-show="firstName.$invalid && firstName.$dirty">Sorry, the value is not valid.</help-block>
+      <help-block ng-show="firstName.$pristine">Please enter your first name</help-block>
+      <help-block ng-show="firstName.$valid && firstName.$dirty && firstName.$viewValue.length > 0">Thank you
+      </help-block>
+    </fg-input>
 
-    </div>
+    <fg-input type="text" name="lastName" ng-model="data.lastName" class="small" ng-minlength="5" maxlength="30"
+              ng-required="true" placeholder="e.g. Last name">
+      <label ng-show="lastName.$pristine">Last name</label>
+      <label ng-show="lastName.$dirty">Last name <i class="fa"
+                                                      ng-class="{'fa-close' : lastName.$invalid && lastName.$dirty, 'fa-check' : lastName.$valid && lastName.$dirty}"></i></label>
+      <help-block ng-show="lastName.$invalid && lastName.$dirty">Sorry, the value is not valid.</help-block>
+      <help-block ng-show="lastName.$pristine">Please enter your first name</help-block>
+      <help-block ng-show="lastName.$valid && lastName.$dirty && lastName.$viewValue.length > 0">Thank you
+      </help-block>
+    </fg-input>
+
+
+    
+    <fg-textarea name="details" ng-model="data.details" rows="3" cols="10" class="small">
+      <label ng-show="details.$pristine">Details</label>
+      <label ng-show="details.$dirty">Details <i class="fa"
+                                                      ng-class="{'fa-close' : details.$invalid && details.$dirty, 'fa-check' : details.$valid && details.$dirty}"></i></label>
+
+      <help-block ng-show="details.$invalid && details.$dirty">Sorry, the value is not valid.</help-block>
+      <help-block ng-show="details.$pristine">Please enter some customer details</help-block>
+      <help-block ng-show="details.$valid && details.$dirty && details.$viewValue.length > 0">Thank you
+      </help-block>
+    </fg-textarea>
+
+    <pre>{{data | json}}</pre>
   </form>
 </div>
