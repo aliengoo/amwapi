@@ -125,6 +125,12 @@
     <Content Include="app\appConfig.js" />
     <Content Include="app\appRun.js" />
     <Content Include="app\bootstrap\directives\fg-input\fg-input.js" />
+    <Content Include="app\bootstrap\directives\fg-select\fg-select.js" />
+    <Content Include="app\bootstrap\directives\fg-textarea\fg-textarea.js" />
+    <Content Include="app\bootstrap\services\fgCompileFnSvc.js" />
+    <Content Include="app\bootstrap\services\renderErrors.js" />
+    <Content Include="app\bootstrap\services\renderHelpBlocks.js" />
+    <Content Include="app\bootstrap\services\validateAttrsSvc.js" />
     <Content Include="app\common\services\helloWorldHub.js" />
     <Content Include="app\common\services\signalRSvc.js" />
     <Content Include="app\views\bootstrap-directives\bootstrap-directives.html" />
@@ -186,6 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\bootstrap\directives\errors\" />
     <Folder Include="app\common\controllers\" />
     <Folder Include="app\common\directives\" />
     <Folder Include="app\common\filters\" />
