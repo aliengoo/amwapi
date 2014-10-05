@@ -67,7 +67,7 @@
           $s.form = form;
 
           var element = angular.element($($e).find('[name="' + $a.name + '"]').first());
-          console.log(element);
+
           $s[$a.name + "Element"] = element;
 
           var ngModelCtrl = element.controller('ngModel');

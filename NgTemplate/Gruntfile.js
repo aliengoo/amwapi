@@ -5,6 +5,7 @@
     'bower/lodash/dist/lodash.min.js',
     'bower/momentjs/min/moment.min.js',
     'bower/stringjs/lib/string.min.js',
+    'bower/bootstrap/dist/js/bootstrap.min.js',
     'bower/toastr/toastr.min.js',
     'bower/angular/angular.min.js',
     'bower/angular-i18n/angular-locale_en-gb.js',
