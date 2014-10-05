@@ -127,6 +127,8 @@
     <Content Include="app\bootstrap\directives\fg-input\fg-input.js" />
     <Content Include="app\bootstrap\directives\fg-select\fg-select.js" />
     <Content Include="app\bootstrap\directives\fg-textarea\fg-textarea.js" />
+    <Content Include="app\bootstrap\directives\navbar\navbar.html" />
+    <Content Include="app\bootstrap\directives\navbar\navbar.js" />
     <Content Include="app\bootstrap\services\fgCompileFnSvc.js" />
     <Content Include="app\bootstrap\services\renderErrors.js" />
     <Content Include="app\bootstrap\services\renderHelpBlocks.js" />
@@ -135,6 +137,14 @@
     <Content Include="app\common\services\signalRSvc.js" />
     <Content Include="app\views\bootstrap-directives\bootstrap-directives.html" />
     <Content Include="app\views\bootstrap-directives\bootstrapDirectivesCtrl.js" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\first-name.html" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\first-name.js" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\last-name.html" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\last-name.js" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\user-details.html" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\user-details.js" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\user-title.html" />
+    <Content Include="app\views\bootstrap-directives\sample-directives\user-title.js" />
     <Content Include="app\views\home\home.html" />
     <Content Include="app\views\home\homeCtrl.js" />
     <Content Include="bower.json" />
@@ -192,7 +202,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\bootstrap\directives\errors\" />
     <Folder Include="app\common\controllers\" />
     <Folder Include="app\common\directives\" />
     <Folder Include="app\common\filters\" />
