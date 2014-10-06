@@ -16,10 +16,12 @@
           states += '<li ng-class="{\'active\' : currentStateName === \'' + state.name + '\'}"><a ui-sref=\'' + state.name + '\'>' + $(stateElement).html() + '</a></li>';
         });
 
-        var template = _.template($templateCache.get('bootstrap/directives/navbar/navbar.html'))({
+        var templateData = {
           states : states,
-          brand : $a.brand
-        });
+          brand : $e.find('brand').html()
+        };
+
+        var template = _.template($templateCache.get('common/directives/navbar/navbar.html'))(templateData);
 
         $e.html(template);
 
