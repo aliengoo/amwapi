@@ -13,7 +13,7 @@
         angular.forEach($e.find('state'), function(stateElement) {
           var state = $state.get($(stateElement).attr('name'));
 
-          states += '<li ng-class="{\'active\' : currentStateName === \'' + state.name + '\'}"><a ui-sref=\'' + state.name + '\'>' + $(stateElement).text() + '</a></li>';
+          states += '<li ng-class="{\'active\' : currentStateName === \'' + state.name + '\'}"><a ui-sref=\'' + state.name + '\'>' + $(stateElement).html() + '</a></li>';
         });
 
         var template = _.template($templateCache.get('bootstrap/directives/navbar/navbar.html'))({
