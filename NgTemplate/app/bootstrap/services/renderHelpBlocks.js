@@ -27,7 +27,7 @@
           });
 
           helpBlocks += $interpolate(helpBlockTemplate)({
-            text: helpBlock.innerText,
+            text: $(helpBlock).html(),
             attrs: helpBlockAttrs,
             classes: helpBlockClasses
           });
