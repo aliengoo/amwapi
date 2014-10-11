@@ -4,7 +4,8 @@
   window.app.controller('bootstrapDirectivesCtrl', ['$scope', function ($scope) {
 
     $scope.data = {
-      title : 'Mr'
+      title : 'Mr',
+      gender : 'male'
     };
 
 
