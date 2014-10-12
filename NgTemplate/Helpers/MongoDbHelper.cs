@@ -1,10 +1,18 @@
 ﻿namespace NgTemplate.Helpers
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Configuration;
+    using System.Linq;
 
+    using MongoDB.Bson;
+    using MongoDB.Bson.IO;
     using MongoDB.Driver;
 
-    public class MongoDbHelper
+    using Newtonsoft.Json.Linq;
+
+    public static class MongoDbHelper
     {
         public static MongoDatabase GetDatabase(string connectionStringName)
         {
@@ -23,6 +31,38 @@
             }
 
             return new MongoClient(url).GetServer().GetDatabase(url.DatabaseName);
+        }
+
+        public static JArray ToJArray(this IEnumerable<BsonDocument> documents)
+        {
+            if (documents != null)
+            {
+                 return new JArray(documents.Select(d => JObject.Parse(d.ToJson(new JsonWriterSettings()
+                                                      {
+                                                          OutputMode = JsonOutputMode.Strict
+                                                      }))));
+            }
+
+            return new JArray();
+        }
+
+        public static JArray ToJArray(this MongoCursor cursor)
+        {
+            return cursor != null ? ((IEnumerable<BsonDocument>)cursor).ToJArray() : new JArray();
+        }
+
+        public static JObject ToJObject(this BsonDocument document)
+        {
+            if (document != null)
+            {
+                return JObject.Parse(
+                    document.ToJson(new JsonWriterSettings
+                                    {
+                                        OutputMode = JsonOutputMode.Strict
+                                    }));
+            }
+
+            return null;
         }
     }
 }

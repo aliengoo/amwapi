@@ -51,6 +51,10 @@
       url: '/bootstrap-directives',
       templateUrl: 'views/bootstrap-directives/bootstrap-directives.html',
       controller: 'bootstrapDirectivesCtrl'
+    }).state('mongo-demo', {
+      url: '/mongo-demo',
+      templateUrl: 'views/mongo-demo/mongo-demo.html',
+      controller: 'mongoDemoCtrl'
     });
   }]);
 }());
