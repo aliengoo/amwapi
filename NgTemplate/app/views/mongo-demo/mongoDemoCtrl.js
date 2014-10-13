@@ -2,7 +2,7 @@
 
   "use strict";
 
-  window.app.controller('mongoDemoCtrl', ['$scope', '$log', 'mongoSvc', function($scope, $log, mongoSvc) {
+  window.app.controller('mongoDemoCtrl', ['$scope', '$log', 'mongoSvc', 'querySvc', function($scope, $log, mongoSvc, querySvc) {
 
     $scope.request = {
       collection : 'customers',
@@ -15,9 +15,19 @@
 
     $scope.search = function() {
 
+      var lastNamePredicate = querySvc.createQuery().match('lastName', 'n', 'i');
+
+      var actual = lastNamePredicate;
+
+
       $scope.inProgress = true;
 
-      mongoSvc.find($scope.request).then(function(result) {
+      var state = actual.getState();
+      state.collection = 'customers';
+
+      console.log(state);
+
+      mongoSvc.find(state).then(function(result) {
         $scope.result = result;
       }, function(error) {
         $log.error(error);

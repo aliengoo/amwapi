@@ -49,6 +49,7 @@
 
             var doc = BsonDocument.Parse((request["data"] ?? "{}").ToString());
 
+			// TODO : Switch to convention pack.
             if (!doc.Contains("_id"))
             {
                 doc.Add("_id", BsonValue.Create(_idGenerator.GenerateId(collection, doc)));

@@ -1,7 +1,6 @@
 ﻿namespace NgTemplate.Repositories
 {
     using System;
-    using System.Linq;
 
     using MongoDB.Bson;
     using MongoDB.Driver;
@@ -75,6 +74,9 @@
         public MongoCursor FindAll()
         {
             var find = Collection.FindAllAs<BsonDocument>();
+
+			find.SetSortOrder(SortBy);
+			find.SetFields(Fields);
 
             if (Limit.HasValue)
             {

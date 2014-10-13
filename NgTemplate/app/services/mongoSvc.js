@@ -18,15 +18,14 @@
 
     return {
       find: function (request, canceller) {
-
         clearEmpty(request);
-
         var d = $q.defer();
 
         $http({
             method: 'POST',
             url: apiUrl + "/collection/" + request.collection + "/find",
-            data: request,
+            //https://github.com/angular/angular.js/issues/1463
+            data: JSON.stringify(request),
             timeout: canceller
           }
         ).success(function (result) {
@@ -38,6 +37,7 @@
         return d.promise;
       },
       save : function(request, canceller) {
+
         clearEmpty(request);
 
         var d = $q.defer();
@@ -45,7 +45,8 @@
         $http({
             method: 'POST',
             url: apiUrl + "/collection/" + request.collection + "/save",
-            data: request,
+            //https://github.com/angular/angular.js/issues/1463
+            data: JSON.stringify(request),
             timeout: canceller
           }
         ).success(function (result) {

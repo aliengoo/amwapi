@@ -65,6 +65,7 @@
                                         Update = Update.Inc("Value", 1),
                                         VersionReturned = FindAndModifyDocumentVersion.Modified
                                     };
+
             var result = _collection.FindAndModify(findAndModifyArgs);
 
             BsonValue value;
