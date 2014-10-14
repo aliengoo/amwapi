@@ -125,6 +125,7 @@
     <Content Include="app\appConfig.js" />
     <Content Include="app\appRun.js" />
     <Content Include="app\bootstrap\directives\fg-input\fg-input.js" />
+    <Content Include="app\bootstrap\directives\fg-radio-btns\fg-radio-btns.js" />
     <Content Include="app\bootstrap\directives\fg-select\fg-select.js" />
     <Content Include="app\bootstrap\directives\fg-textarea\fg-textarea.js" />
     <Content Include="app\bootstrap\directives\navbar\navbar.html" />
@@ -135,6 +136,11 @@
     <Content Include="app\bootstrap\services\validateAttrsSvc.js" />
     <Content Include="app\common\services\helloWorldHub.js" />
     <Content Include="app\common\services\signalRSvc.js" />
+    <Content Include="app\services\apiUrl.js" />
+    <Content Include="app\services\helloWorldHub.js" />
+    <Content Include="app\services\mongoSvc.js" />
+    <Content Include="app\services\querySvc.js" />
+    <Content Include="app\services\signalRSvc.js" />
     <Content Include="app\views\bootstrap-directives\bootstrap-directives.html" />
     <Content Include="app\views\bootstrap-directives\bootstrapDirectivesCtrl.js" />
     <Content Include="app\views\bootstrap-directives\sample-directives\first-name.html" />
