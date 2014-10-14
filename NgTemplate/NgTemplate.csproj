@@ -134,8 +134,6 @@
     <Content Include="app\bootstrap\services\renderErrors.js" />
     <Content Include="app\bootstrap\services\renderHelpBlocks.js" />
     <Content Include="app\bootstrap\services\validateAttrsSvc.js" />
-    <Content Include="app\common\services\helloWorldHub.js" />
-    <Content Include="app\common\services\signalRSvc.js" />
     <Content Include="app\services\apiUrl.js" />
     <Content Include="app\services\helloWorldHub.js" />
     <Content Include="app\services\mongoSvc.js" />
@@ -153,6 +151,8 @@
     <Content Include="app\views\bootstrap-directives\sample-directives\user-title.js" />
     <Content Include="app\views\home\home.html" />
     <Content Include="app\views\home\homeCtrl.js" />
+    <Content Include="app\views\mongo-demo\mongo-demo.html" />
+    <Content Include="app\views\mongo-demo\mongoDemoCtrl.js" />
     <Content Include="bower.json" />
     <Content Include="less\style.less" />
     <Content Include="packages.config" />
@@ -214,9 +214,6 @@
     <Compile Include="Repositories\SequenceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\common\controllers\" />
-    <Folder Include="app\common\directives\" />
-    <Folder Include="app\common\filters\" />
     <Folder Include="app\home\" />
   </ItemGroup>
   <PropertyGroup>
