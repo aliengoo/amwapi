@@ -1,0 +1,35 @@
+<bw-navbar >
+  <brand>NgTemplate</brand>
+  <state name="home">Home</state>
+  <state name="bootstrap-widgets-demo">Bootstrap</state>
+</bw-navbar>
+
+<div class="container">
+  <header class="page-header">
+    <h1><code>bw-*</code> Demo</h1>
+  </header>
+  <form name="f" novalidate>
+    <div class="row">
+      <div class="col-md-6">
+        <user-title ng-model="data.title"></user-title>
+
+        <first-name ng-model="data.firstName"></first-name>
+
+        <last-name ng-model="data.lastName"></last-name>
+
+        <bw-radio-btns name="gender" ng-model="data.gender">
+          <radio-option value="">Unknown</radio-option>
+          <radio-option value="male">Male</radio-option>
+          <radio-option value="female">Female</radio-option>
+        </bw-radio-btns>
+      </div>
+      <div class="col-md-6">
+        <user-details ng-model="data.details"></user-details>
+      </div>
+    </div>
+
+    <div class="row">
+      <pre>{{data | json}}</pre>
+    </div>
+  </form>
+</div>

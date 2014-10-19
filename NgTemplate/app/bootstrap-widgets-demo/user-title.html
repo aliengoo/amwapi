@@ -1,0 +1,17 @@
+<div>
+  <bw-select name="title" ng-model="ngModel" class="small" ng-required="true">
+    <label ng-show="title.$pristine">Title</label>
+    <label ng-show="title.$dirty">Title <i class="fa"
+                                           ng-class="{'fa-close' : title.$invalid && title.$dirty, 'fa-check' : title.$valid && title.$dirty}"></i></label>
+
+    <option value="Mr">Mr</option>
+    <option value="Mrs">Mrs</option>
+    <option value="Miss">Miss</option>
+    <option value="Ms">Ms</option>
+
+    <help-block ng-show="title.$invalid && title.$dirty">Sorry, the value is not valid.</help-block>
+    <help-block ng-show="title.$pristine">Please select a title</help-block>
+    <help-block ng-show="title.$valid && title.$dirty && title.$viewValue.length > 0">Thank you
+    </help-block>
+  </bw-select>
+</div>

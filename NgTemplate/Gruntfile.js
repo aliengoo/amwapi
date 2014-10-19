@@ -6,8 +6,7 @@
     'bower/momentjs/min/moment.min.js',
     'bower/stringjs/lib/string.min.js',
     'bower/bootstrap/dist/js/bootstrap.min.js',
-    'bower/toastr/toastr.min.js',
-    'bower/angular/angular.min.js',
+    'bower/angular/angular.js',
     'bower/angular-i18n/angular-locale_en-gb.js',
     'bower/angular-animate/angular-animate.min.js',
     'bower/angular-cookies/angular-cookies.min.js',
@@ -23,7 +22,8 @@
     'bower/signalr/jquery.signalR.min.js',
     'bower/select2/select2.min.js',
     'bower/angular-ui-select2/src/select2.js',
-    'bower/angular-block-ui/dist/angular-block-ui.min.js'
+    'bower/angular-block-ui/dist/angular-block-ui.min.js',
+    'bower/angular-toastr/dist/angular-toastr.min.js'
   ];
 
     grunt.initConfig({
@@ -36,7 +36,14 @@
       },
       app: {
         files: {
-          'public/js/app.concat.js': ['app/*.js', 'app/**/*.js', 'app/**/**/*.js', 'app/**/**/**/*.js']
+          'public/js/app.concat.js': [
+            'app/*.module.js',
+            'app/app.config.js',
+            'app/app.run.js',
+            'app/**/*.module.js',
+            'app/**/*.js',
+            'app/**/**/*.js',
+            'app/**/**/**/*.js']
         }
       },
       // remember - use the MINIFIED versions of the files
@@ -77,6 +84,7 @@
             'bower/select2-bootstrap3-css/select2-bootstrap.css',
             'bower/angular-ui-select2/docs/styles.css',
             'bower/angular-block-ui/angular-block-ui.min.css',
+            'bower/angular-toastr/dist/angular-toastr.min.css',
             'less/style.css'
           ]
         }

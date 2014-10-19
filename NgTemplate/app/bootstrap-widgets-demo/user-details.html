@@ -1,0 +1,12 @@
+<div>
+  <bw-textarea name="details" ng-model="ngModel" rows="3" cols="10">
+    <label ng-show="details.$pristine">Details</label>
+    <label ng-show="details.$dirty">Details <i class="fa"
+                                               ng-class="{'fa-close' : details.$invalid && details.$dirty, 'fa-check' : details.$valid && details.$dirty}"></i></label>
+
+    <help-block ng-show="details.$invalid && details.$dirty">Sorry, the value is not valid.</help-block>
+    <help-block ng-show="details.$pristine">Please enter some customer details</help-block>
+    <help-block ng-show="details.$valid && details.$dirty && details.$viewValue.length > 0">Thank you
+    </help-block>
+  </bw-textarea>
+</div>

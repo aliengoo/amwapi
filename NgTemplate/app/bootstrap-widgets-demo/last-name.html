@@ -1,0 +1,12 @@
+<div>
+  <bw-input type="text" name="lastName" ng-model="ngModel" class="small" ng-minlength="5" maxlength="30"
+            ng-required="true" placeholder="e.g. Last name">
+    <label ng-show="lastName.$pristine">Last name</label>
+    <label ng-show="lastName.$dirty">Last name <i class="fa"
+                                                  ng-class="{'fa-close' : lastName.$invalid && lastName.$dirty, 'fa-check' : lastName.$valid && lastName.$dirty}"></i></label>
+    <help-block ng-show="lastName.$invalid && lastName.$dirty">Sorry, the value is not valid.</help-block>
+    <help-block ng-show="lastName.$pristine">Please enter your last name</help-block>
+    <help-block ng-show="lastName.$valid && lastName.$dirty && lastName.$viewValue.length > 0">Thank you
+    </help-block>
+  </bw-input>
+</div>

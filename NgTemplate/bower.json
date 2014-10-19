@@ -44,6 +44,7 @@
     "angular-ui-select2": "~0.0.5",
     "angular-block-ui": "~0.0.12",
     "select2-bootstrap3-css": "~1.4.1",
-    "angular": "~1.2.25"
+    "angular": "~1.2.25",
+    "angular-toastr": "~0.5.1"
   }
 }

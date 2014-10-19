@@ -208,7 +208,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MongoDbHelper.cs" />
-    <Compile Include="Hubs\HelloWorldHub.cs" />
+    <Compile Include="Hubs\HomeHub.cs" />
     <Compile Include="Hubs\WhosThereHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IMongoRepository.cs" />
