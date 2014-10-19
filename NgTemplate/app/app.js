@@ -1,16 +1,26 @@
 ﻿(function () {
   "use strict";
   window.app = angular.module('app', [
-     'ngResource',
-     'ngCookies',
-     'ngAnimate',
-     'ngFx',
-     'ui.router',
-     'ui.utils',
-     'ui.bootstrap',
-     'angular-loading-bar',
-      'cfp.hotkeys',
-     'LocalStorageModule',
-     'ui.select2',
-     'blockUI']);
+    // Angularjs
+
+    'ngResource',
+    'ngCookies',
+    'ngAnimate',
+
+    // application modules
+    'common',
+
+    // third-party modules
+
+    'ngFx',
+    'ui.router',
+    'ui.utils',
+    'ui.bootstrap',
+    'angular-loading-bar',
+    'cfp.hotkeys',
+    'LocalStorageModule',
+    'ui.select2',
+    'blockUI']);
+
+
 }());

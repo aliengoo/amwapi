@@ -9,31 +9,32 @@
 
     using Newtonsoft.Json.Linq;
 
-    public class MongoRepository : IRepository
+    public class MongoRepository : IMongoRepository
     {
-        private readonly MongoDatabase _db;
+        private readonly MongoDatabase _database;
 
         private readonly IIdGenerator _idGenerator;
 
-        public MongoRepository(MongoDatabase db, IIdGenerator idGenerator)
+        public MongoRepository(MongoDatabase database, IIdGenerator idGenerator)
         {
-            _db = db;
+            _database = database;
+
             _idGenerator = idGenerator;
         }
 
         public JArray Find(JObject request)
         {
-            return new MongoQueryData(_db, request).Find().ToJArray();
+            return new MongoQueryData(_database, request).Find().ToJArray();
         }
 
         public JObject FindOne(JObject request)
         {
-            return new MongoQueryData(_db, request).FindOne().ToJObject();
+            return new MongoQueryData(_database, request).FindOne().ToJObject();
         }
 
         public JArray FindAll(JObject request)
         {
-            return new MongoQueryData(_db, request).FindAll().ToJArray();
+            return new MongoQueryData(_database, request).FindAll().ToJArray();
         }
 
         public JObject Save(JObject request)
@@ -45,7 +46,7 @@
                 throw new MongoRepositoryException("No collection property defined");
             }
 
-            var collection = _db.GetCollection(collectionName.Value<string>());
+            var collection = _database.GetCollection(collectionName.Value<string>());
 
             var doc = BsonDocument.Parse((request["data"] ?? "{}").ToString());
 
@@ -76,7 +77,7 @@
                 throw new MongoRepositoryException("No collection property defined");
             }
 
-            var collection = _db.GetCollection(collectionName.Value<string>());
+            var collection = _database.GetCollection(collectionName.Value<string>());
 
             if (id.Type == JTokenType.Object && id["$oid"] != null)
             {
@@ -94,6 +95,49 @@
             }
                 
             throw new MongoRepositoryException("Invalid id");
+        }
+
+        public JObject Remove(JObject request)
+        {
+            var collectionName = request["collection"];
+
+            if (collectionName == null)
+            {
+                throw new MongoRepositoryException("No collection property defined");
+            }
+
+            var query = request["query"];
+
+            if (query == null)
+            {
+                throw new MongoRepositoryException("Query must be defined");
+            }
+
+            var actualQuery = new QueryDocument(BsonDocument.Parse((request["query"] ?? "{}").ToString()));
+
+            var collection = _database.GetCollection(collectionName.Value<string>());
+
+            var writeConcernResult = collection.Remove(actualQuery);
+
+            return JObject.FromObject(writeConcernResult);
+        }
+
+        public MongoDatabase Database
+        {
+            get
+            {
+                return _database;
+            }
+        }
+
+        public MongoCollection GetCollection(string name)
+        {
+            return Database.GetCollection(name);
+        }
+
+        public MongoCollection<T> GetCollection<T>(string name)
+        {
+            return Database.GetCollection<T>(name);
         }
     }
 }

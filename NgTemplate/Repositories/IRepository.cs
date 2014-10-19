@@ -13,5 +13,7 @@
         JObject Save(JObject request);
 
         JObject FindById(JObject request);
+
+        JObject Remove(JObject request);
     }
 }

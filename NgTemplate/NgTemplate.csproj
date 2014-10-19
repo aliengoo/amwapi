@@ -14,7 +14,7 @@
     <RootNamespace>NgTemplate</RootNamespace>
     <AssemblyName>NgTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -199,14 +199,19 @@
   <ItemGroup>
     <Compile Include="App_Start\SignalRStartUp.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Contexts\DateContext.cs" />
+    <Compile Include="Contexts\IDateContext.cs" />
+    <Compile Include="Contexts\IUserContext.cs" />
+    <Compile Include="Contexts\WindowsUserContext.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
-    <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MongoDbHelper.cs" />
     <Compile Include="Hubs\HelloWorldHub.cs" />
+    <Compile Include="Hubs\WhosThereHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IMongoRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\MongoQueryData.cs" />
     <Compile Include="Repositories\MongoRepository.cs" />
