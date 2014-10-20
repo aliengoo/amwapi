@@ -121,6 +121,52 @@
   <ItemGroup>
     <Content Include=".bowerrc" />
     <Content Include=".gitignore" />
+    <Content Include="app\app.config.js" />
+    <Content Include="app\app.module.js" />
+    <Content Include="app\app.run.js" />
+    <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.controller.js" />
+    <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.html" />
+    <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.module.js" />
+    <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.state.js" />
+    <Content Include="app\bootstrap-widgets-demo\first-name.html" />
+    <Content Include="app\bootstrap-widgets-demo\first-name.js" />
+    <Content Include="app\bootstrap-widgets-demo\last-name.html" />
+    <Content Include="app\bootstrap-widgets-demo\last-name.js" />
+    <Content Include="app\bootstrap-widgets-demo\user-details.html" />
+    <Content Include="app\bootstrap-widgets-demo\user-details.js" />
+    <Content Include="app\bootstrap-widgets-demo\user-title.html" />
+    <Content Include="app\bootstrap-widgets-demo\user-title.js" />
+    <Content Include="app\bootstrap-widgets\boostrap-widgets.module.js" />
+    <Content Include="app\bootstrap-widgets\bw-input.js" />
+    <Content Include="app\bootstrap-widgets\bw-navbar.html" />
+    <Content Include="app\bootstrap-widgets\bw-navbar.js" />
+    <Content Include="app\bootstrap-widgets\bw-radio-btns.js" />
+    <Content Include="app\bootstrap-widgets\bw-select.js" />
+    <Content Include="app\bootstrap-widgets\bw-textarea.js" />
+    <Content Include="app\bootstrap-widgets\bwCompileFn.js" />
+    <Content Include="app\bootstrap-widgets\bwRenderErrors.js" />
+    <Content Include="app\bootstrap-widgets\bwRenderHelpBlocks.js" />
+    <Content Include="app\bootstrap-widgets\bwValidateAttrs.js" />
+    <Content Include="app\common\common.js" />
+    <Content Include="app\common\common.module.js" />
+    <Content Include="app\common\common.obj.js" />
+    <Content Include="app\common\common.template.js" />
+    <Content Include="app\config\config.js" />
+    <Content Include="app\config\config.module.js" />
+    <Content Include="app\config\config.virtualDirectory.js" />
+    <Content Include="app\data\data.module.js" />
+    <Content Include="app\data\data.mongo.js" />
+    <Content Include="app\exception\exception.exceptionHandler.js" />
+    <Content Include="app\exception\exception.module.js" />
+    <Content Include="app\home\home.controller.js" />
+    <Content Include="app\home\home.html" />
+    <Content Include="app\home\home.hub.js" />
+    <Content Include="app\home\home.module.js" />
+    <Content Include="app\home\home.state.js" />
+    <Content Include="app\logger\logger.js" />
+    <Content Include="app\logger\logger.module.js" />
+    <Content Include="app\signalR\signalr.js" />
+    <Content Include="app\signalR\signalr.module.js" />
     <Content Include="bower.json" />
     <Content Include="less\style.less" />
     <Content Include="packages.config" />
@@ -186,7 +232,18 @@
     <Compile Include="Repositories\MongoRepositoryException.cs" />
     <Compile Include="Repositories\SequenceRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="app\bootstrap\directives\fg-input\" />
+    <Folder Include="app\bootstrap\directives\fg-radio-btns\" />
+    <Folder Include="app\bootstrap\directives\fg-select\" />
+    <Folder Include="app\bootstrap\directives\fg-textarea\" />
+    <Folder Include="app\bootstrap\directives\navbar\" />
+    <Folder Include="app\bootstrap\services\" />
+    <Folder Include="app\services\" />
+    <Folder Include="app\views\bootstrap-directives\sample-directives\" />
+    <Folder Include="app\views\home\" />
+    <Folder Include="app\views\mongo-demo\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

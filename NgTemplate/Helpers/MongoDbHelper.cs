@@ -64,5 +64,34 @@
 
             return null;
         }
+
+		public static BsonValue GetPath(this BsonValue bson, string path)
+		{
+			if (bson.BsonType != BsonType.Document)
+			{
+				throw new Exception("Not a doc");
+			}
+
+			var doc = bson.AsBsonDocument;
+
+			var tokens = path.Split(".".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+			if (tokens.Length == 0)
+			{
+				return doc;
+			}
+
+			if (!doc.Contains(tokens[0]))
+			{
+				return BsonNull.Value;
+			}
+
+			if (tokens.Length > 1)
+			{
+				return GetPath(doc[tokens[0]], tokens[1]);
+			}
+
+			return doc[tokens[0]];
+		}
     }
 }
