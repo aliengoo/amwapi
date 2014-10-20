@@ -28,7 +28,7 @@
         errorsHtml += '<li class="text-danger">'+ error + '</li>';
       });
 
-      return template(templateStr, {
+      return template.render(templateStr, {
         title : title,
         errorsHtml : errorsHtml
       });
