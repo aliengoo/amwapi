@@ -11,26 +11,26 @@
 
     public class WhosThereHub : Hub
     {
-        private readonly IRepository _repository;
+	    private readonly IJsonRepository _jsonRepository;
 
-        private readonly IUserContext _userContext;
+	    private readonly IUserContext _userContext;
 
         private readonly IDateContext _dateContext;
 
-        public WhosThereHub(IRepository repository, IUserContext userContext, IDateContext dateContext)
+        public WhosThereHub(IJsonRepository jsonRepository, IUserContext userContext, IDateContext dateContext)
         {
-            _repository = repository;
-            _userContext = userContext;
+	        _jsonRepository = jsonRepository;
+	        _userContext = userContext;
             _dateContext = dateContext;
         }
 
         public override Task OnConnected()
         {
-            var user = _repository.FindById(JObject.FromObject(new
+			var user = _jsonRepository.FindById(JObject.FromObject(new
                                                                {
                                                                    collection = "whos_there",
                                                                    _id = _userContext.Name
-                                                               })) ?? _repository.Save(JObject.FromObject(new
+															   })) ?? _jsonRepository.Save(JObject.FromObject(new
                                                                                                           {
                                                                                                               _id = _userContext.Name,
                                                                                                               created = _dateContext.Now,
@@ -44,7 +44,7 @@
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            var user = _repository.FindById(JObject.FromObject(new
+			var user = _jsonRepository.FindById(JObject.FromObject(new
                                                                {
                                                                    collection = "whos_there",
                                                                    _id = _userContext.Name
@@ -54,7 +54,7 @@
             {
                 Clients.All.userDisconnected(user);
 
-                _repository.Remove(
+				_jsonRepository.Remove(
                     JObject.FromObject(new { collection = "whos_there", query = new { _id = _userContext.Name } }));
             }
 

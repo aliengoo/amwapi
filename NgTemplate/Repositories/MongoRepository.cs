@@ -1,143 +1,120 @@
 ﻿namespace NgTemplate.Repositories
 {
-    using MongoDB.Bson;
-    using MongoDB.Bson.Serialization;
 
-    using NgTemplate.Helpers;
+	using MongoDB.Bson;
+	using MongoDB.Driver;
 
-    using MongoDB.Driver;
+	public class MongoRepository : IMongoRepository
+	{
+		public MongoDatabase Database { get; private set; }
 
-    using Newtonsoft.Json.Linq;
+		public MongoRepository(MongoDatabase database)
+		{
+			Database = database;
+		}
 
-    public class MongoRepository : IMongoRepository
-    {
-        private readonly MongoDatabase _database;
+		public MongoCollection GetCollection(string name)
+		{
+			return Database.GetCollection(name);
+		}
 
-        private readonly IIdGenerator _idGenerator;
+		public MongoCollection<T> GetCollection<T>(string name)
+		{
+			return Database.GetCollection<T>(name);
+		}
 
-        public MongoRepository(MongoDatabase database, IIdGenerator idGenerator)
-        {
-            _database = database;
+		public MongoCursor Find(
+			string collectionName,
+			IMongoQuery query,
+			int? limit,
+			int? skip,
+			IMongoFields fields,
+			IMongoSortBy sortBy)
+		{
+			var c = GetExistingCollection(collectionName);
 
-            _idGenerator = idGenerator;
-        }
+			var q = c.Find(query);
 
-        public JArray Find(JObject request)
-        {
-            return new MongoQueryData(_database, request).Find().ToJArray();
-        }
+			if (limit.HasValue)
+			{
+				q.SetLimit(limit.Value);
+			}
 
-        public JObject FindOne(JObject request)
-        {
-            return new MongoQueryData(_database, request).FindOne().ToJObject();
-        }
+			if (skip.HasValue)
+			{
+				q.SetSkip(skip.Value);
+			}
 
-        public JArray FindAll(JObject request)
-        {
-            return new MongoQueryData(_database, request).FindAll().ToJArray();
-        }
+			if (fields != null)
+			{
+				q.SetFields(fields);
+			}
 
-        public JObject Save(JObject request)
-        {
-            var collectionName = request["collection"];
+			if (sortBy != null)
+			{
+				q.SetSortOrder(sortBy);
+			}
 
-            if (collectionName == null)
-            {
-                throw new MongoRepositoryException("No collection property defined");
-            }
+			return q;
+		}
 
-            var collection = _database.GetCollection(collectionName.Value<string>());
+		public BsonDocument FindOne(string collectionName, IMongoQuery query)
+		{
+			var c = GetExistingCollection(collectionName);
 
-            var doc = BsonDocument.Parse((request["data"] ?? "{}").ToString());
+			return c.FindOne(query);
+		}
 
-			// TODO : Switch to convention pack.
-            if (!doc.Contains("_id"))
-            {
-                doc.Add("_id", BsonValue.Create(_idGenerator.GenerateId(collection, doc)));
-            }
+		public MongoCursor FindAll(string collectionName, IMongoFields fields, IMongoSortBy sortBy)
+		{
+			var c = GetExistingCollection(collectionName);
 
-            collection.Save(doc);
+			var q = c.FindAll();
 
-            return doc.ToJObject();
-        }
+			if (fields != null)
+			{
+				q.SetFields(fields);
+			}
 
-        public JObject FindById(JObject request)
-        {
-            var id = request["_id"];
+			if (sortBy != null)
+			{
+				q.SetSortOrder(sortBy);
+			}
 
-            if (id == null)
-            {
-                throw new MongoRepositoryException("No _id property defined");
-            }
+			return q;
+		}
 
-            var collectionName = request["collection"];
+		public BsonDocument Save(string collectionName, BsonDocument doc)
+		{
+			var c = GetExistingCollection(collectionName);
 
-            if (collectionName == null)
-            {
-                throw new MongoRepositoryException("No collection property defined");
-            }
+			c.Save(doc);
 
-            var collection = _database.GetCollection(collectionName.Value<string>());
+			return doc;
+		}
 
-            if (id.Type == JTokenType.Object && id["$oid"] != null)
-            {
-                return collection.FindOneByIdAs<BsonDocument>(ObjectId.Parse(id["$oid"].Value<string>())).ToJObject();
-            }
-            
-            if (id.Type == JTokenType.String)
-            {
-                return collection.FindOneByIdAs<BsonDocument>(id.Value<string>()).ToJObject();
-            }
-            
-            if (id.Type == JTokenType.Integer)
-            {
-                return collection.FindOneByIdAs<BsonDocument>(id.Value<int>()).ToJObject();
-            }
-                
-            throw new MongoRepositoryException("Invalid id");
-        }
+		public BsonDocument FindById(string collectionName, BsonValue id)
+		{
+			var c = GetExistingCollection(collectionName);
 
-        public JObject Remove(JObject request)
-        {
-            var collectionName = request["collection"];
+			return c.FindOneById(id);
+		}
 
-            if (collectionName == null)
-            {
-                throw new MongoRepositoryException("No collection property defined");
-            }
+		public WriteConcernResult Remove(string collectionName, IMongoQuery query)
+		{
+			var c = GetExistingCollection(collectionName);
 
-            var query = request["query"];
+			return c.Remove(query);
+		}
 
-            if (query == null)
-            {
-                throw new MongoRepositoryException("Query must be defined");
-            }
+		private MongoCollection<BsonDocument> GetExistingCollection(string collectionName)
+		{
+			if (!Database.CollectionExists(collectionName))
+			{
+				throw new MongoException(string.Format("Collection {0} does not exist", collectionName));
+			}
 
-            var actualQuery = new QueryDocument(BsonDocument.Parse((request["query"] ?? "{}").ToString()));
-
-            var collection = _database.GetCollection(collectionName.Value<string>());
-
-            var writeConcernResult = collection.Remove(actualQuery);
-
-            return JObject.FromObject(writeConcernResult);
-        }
-
-        public MongoDatabase Database
-        {
-            get
-            {
-                return _database;
-            }
-        }
-
-        public MongoCollection GetCollection(string name)
-        {
-            return Database.GetCollection(name);
-        }
-
-        public MongoCollection<T> GetCollection<T>(string name)
-        {
-            return Database.GetCollection<T>(name);
-        }
-    }
+			return Database.GetCollection(collectionName);
+		}
+	}
 }

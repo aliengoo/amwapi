@@ -1,8 +1,8 @@
 ﻿namespace NgTemplate.Repositories
 {
-    using Newtonsoft.Json.Linq;
+	using Newtonsoft.Json.Linq;
 
-    public interface IRepository
+	public interface IJsonRepository
     {
         JArray Find(JObject request);
 

@@ -9,14 +9,14 @@
     [RoutePrefix("api/collection")]
     public class CollectionController : ApiController
     {
-        private readonly IRepository _repository;
+	    private readonly IJsonRepository _jsonRepository;
 
-        public CollectionController(IRepository repository)
+        public CollectionController(IJsonRepository jsonRepository)
         {
-            _repository = repository;
+	        _jsonRepository = jsonRepository;
         }
 
-        [Route("{collection}/find")]
+	    [Route("{collection}/find")]
         public IHttpActionResult PostFind(JObject request, string collection = null)
         {
             if (!string.IsNullOrWhiteSpace(collection))
@@ -24,7 +24,7 @@
                 request["collection"] = collection;
             }
 
-            var results = _repository.Find(request);
+			var results = _jsonRepository.Find(request);
 
             return Ok(results);
         }
@@ -37,7 +37,7 @@
                 request["collection"] = collection;
             }
 
-            var result = _repository.FindById(request);
+			var result = _jsonRepository.FindById(request);
 
             return Ok(result);
         }
@@ -50,7 +50,7 @@
                 request["collection"] = collection;
             }
 
-            var result = _repository.Save(request);
+			var result = _jsonRepository.Save(request);
 
             return Ok(result);
         }
