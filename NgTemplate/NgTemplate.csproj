@@ -14,7 +14,7 @@
     <RootNamespace>NgTemplate</RootNamespace>
     <AssemblyName>NgTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -121,38 +121,6 @@
   <ItemGroup>
     <Content Include=".bowerrc" />
     <Content Include=".gitignore" />
-    <Content Include="app\app.js" />
-    <Content Include="app\appConfig.js" />
-    <Content Include="app\appRun.js" />
-    <Content Include="app\bootstrap\directives\fg-input\fg-input.js" />
-    <Content Include="app\bootstrap\directives\fg-radio-btns\fg-radio-btns.js" />
-    <Content Include="app\bootstrap\directives\fg-select\fg-select.js" />
-    <Content Include="app\bootstrap\directives\fg-textarea\fg-textarea.js" />
-    <Content Include="app\bootstrap\directives\navbar\navbar.html" />
-    <Content Include="app\bootstrap\directives\navbar\navbar.js" />
-    <Content Include="app\bootstrap\services\fgCompileFnSvc.js" />
-    <Content Include="app\bootstrap\services\renderErrors.js" />
-    <Content Include="app\bootstrap\services\renderHelpBlocks.js" />
-    <Content Include="app\bootstrap\services\validateAttrsSvc.js" />
-    <Content Include="app\services\apiUrl.js" />
-    <Content Include="app\services\helloWorldHub.js" />
-    <Content Include="app\services\mongoSvc.js" />
-    <Content Include="app\services\querySvc.js" />
-    <Content Include="app\services\signalRSvc.js" />
-    <Content Include="app\views\bootstrap-directives\bootstrap-directives.html" />
-    <Content Include="app\views\bootstrap-directives\bootstrapDirectivesCtrl.js" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\first-name.html" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\first-name.js" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\last-name.html" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\last-name.js" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\user-details.html" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\user-details.js" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\user-title.html" />
-    <Content Include="app\views\bootstrap-directives\sample-directives\user-title.js" />
-    <Content Include="app\views\home\home.html" />
-    <Content Include="app\views\home\homeCtrl.js" />
-    <Content Include="app\views\mongo-demo\mongo-demo.html" />
-    <Content Include="app\views\mongo-demo\mongoDemoCtrl.js" />
     <Content Include="bower.json" />
     <Content Include="less\style.less" />
     <Content Include="packages.config" />
@@ -218,9 +186,7 @@
     <Compile Include="Repositories\MongoRepositoryException.cs" />
     <Compile Include="Repositories\SequenceRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\home\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
