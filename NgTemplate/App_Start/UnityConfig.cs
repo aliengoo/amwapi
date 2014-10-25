@@ -24,12 +24,7 @@ namespace NgTemplate.App_Start
             var db = MongoDbHelper.GetDatabase("databaseUrl");
             container.RegisterInstance(typeof(MongoDatabase), db);
 
-            var generator = new SequenceIdGenerator("databaseUrl");
-            container.RegisterInstance(typeof(IIdGenerator), generator);
-
             container.RegisterType<IMongoRepository, MongoRepository>();
-            container.RegisterType<IJsonRepository, JsonRepository>();
-            
             
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

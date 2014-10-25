@@ -14,7 +14,7 @@
     <RootNamespace>NgTemplate</RootNamespace>
     <AssemblyName>NgTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -217,21 +217,16 @@
     <Compile Include="Contexts\IDateContext.cs" />
     <Compile Include="Contexts\IUserContext.cs" />
     <Compile Include="Contexts\WindowsUserContext.cs" />
-    <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\MongoController.cs" />
+    <Compile Include="Converters\MongoJsonConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MongoDbHelper.cs" />
     <Compile Include="Hubs\HomeHub.cs" />
-    <Compile Include="Hubs\WhosThereHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IJsonRepository.cs" />
     <Compile Include="Repositories\IMongoRepository.cs" />
-    <Compile Include="Repositories\MongoQueryData.cs" />
-    <Compile Include="Repositories\JsonRepository.cs" />
     <Compile Include="Repositories\MongoRepository.cs" />
-    <Compile Include="Repositories\MongoRepositoryException.cs" />
-    <Compile Include="Repositories\SequenceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\bootstrap\directives\fg-input\" />
