@@ -1,18 +1,14 @@
-﻿using System;
-
-using MongoDB.Bson;
-using MongoDB.Bson.IO;
-
-using Newtonsoft.Json;
-
-namespace NgTemplate.Converters
+﻿namespace NgTemplate.Converters
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Web.Http.Filters;
+    using MongoDB.Bson;
+    using MongoDB.Bson.IO;
 
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     using JsonReader = Newtonsoft.Json.JsonReader;
     using JsonWriter = Newtonsoft.Json.JsonWriter;

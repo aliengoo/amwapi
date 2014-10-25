@@ -1,9 +1,15 @@
 ﻿namespace NgTemplate
 {
     using System.Web.Http;
+    using System.Web.Http.ModelBinding;
+
+    using MongoDB.Bson;
 
     using NgTemplate.App_Start;
     using NgTemplate.Converters;
+    using NgTemplate.CustomModelBinders;
+
+    using SimpleModelBinderProvider = System.Web.Http.ModelBinding.Binders.SimpleModelBinderProvider;
 
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -11,11 +17,14 @@
         {
             var config = GlobalConfiguration.Configuration;
 
-            var formatters = GlobalConfiguration.Configuration.Formatters;
+            var formatters = config.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.Converters.Add(new BsonDocumentJsonConverter());
-            
 
+            
+            var objectIdModelBinderProvider = new SimpleModelBinderProvider(typeof(ObjectId), new ObjectIdModelBinder());
+            config.Services.Insert(typeof(ModelBinderProvider), 0, objectIdModelBinderProvider);
+            
             UnityConfig.RegisterComponents();
 
             // Enable attribute routing

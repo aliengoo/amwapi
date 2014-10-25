@@ -218,7 +218,9 @@
     <Compile Include="Contexts\IUserContext.cs" />
     <Compile Include="Contexts\WindowsUserContext.cs" />
     <Compile Include="Controllers\MongoController.cs" />
-    <Compile Include="Converters\MongoJsonConverter.cs" />
+    <Compile Include="Converters\BsonDocumentJsonConverter.cs" />
+    <Compile Include="CustomModelBinders\ObjectIdModelBinder.cs" />
+    <Compile Include="Converters\ObjectIdTypeConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
