@@ -1,0 +1,32 @@
+<div class="container" id='data-demo'>
+  <header class="page-header">
+    <h1>
+      Data Demo
+    </h1>
+  </header>
+
+  <form class="row" id='data-demo-content' novalidate name="customerForm">
+
+
+    <bw-input type="text" name="firstName" ng-model="vm.customer.firstName" placeholder="e.g., Joe">
+      <label>First name</label>
+      <help-block>The customers first name</help-block>
+    </bw-input>
+
+    <bw-input type="text" name="lastName" ng-model="vm.customer.lastName" placeholder="e.g., Bloggs">
+      <label>Last name</label>
+      <help-block>The customers last name</help-block>
+    </bw-input>
+
+    <bw-input type="date" name="birthDate" ng-model="vm.customer.birthDate" placeholder="e.g., Bloggs" bson-date>
+      <label>Birth date</label>
+      <help-block>The customers birth date</help-block>
+    </bw-input>
+
+
+    <button class="btn btn-primary" ng-click="vm.get()"><i class="fa fa-user"></i> Get Customer</button>
+    <button class="btn btn-success" ng-click="vm.save()"><i class="fa fa-user"></i> Save Customer</button>
+
+    <pre ng-show="vm.customer">{{vm.customer | json}}</pre>
+  </form>
+</div>

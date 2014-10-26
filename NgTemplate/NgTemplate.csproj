@@ -148,12 +148,18 @@
     <Content Include="app\bootstrap-widgets\bwRenderHelpBlocks.js" />
     <Content Include="app\bootstrap-widgets\bwValidateAttrs.js" />
     <Content Include="app\common\common.js" />
+    <Content Include="app\common\common.json-filter.js" />
     <Content Include="app\common\common.module.js" />
     <Content Include="app\common\common.obj.js" />
     <Content Include="app\common\common.template.js" />
-    <Content Include="app\config\config.js" />
-    <Content Include="app\config\config.module.js" />
-    <Content Include="app\config\config.virtualDirectory.js" />
+    <Content Include="app\data-demo\data-demo.config.js" />
+    <Content Include="app\data-demo\data-demo.controller.js" />
+    <Content Include="app\data-demo\data-demo.html" />
+    <Content Include="app\data-demo\data-demo.list.controller.js" />
+    <Content Include="app\data-demo\data-demo.list.html" />
+    <Content Include="app\data-demo\data-demo.module.js" />
+    <Content Include="app\data\data.bson-date.directive.js" />
+    <Content Include="app\data\data.bson-date.filter.js" />
     <Content Include="app\data\data.module.js" />
     <Content Include="app\data\data.mongo.js" />
     <Content Include="app\exception\exception.exceptionHandler.js" />
@@ -163,8 +169,12 @@
     <Content Include="app\home\home.hub.js" />
     <Content Include="app\home\home.module.js" />
     <Content Include="app\home\home.state.js" />
+    <Content Include="app\lodash\lodash.js" />
+    <Content Include="app\lodash\lodash.module.js" />
     <Content Include="app\logger\logger.js" />
     <Content Include="app\logger\logger.module.js" />
+    <Content Include="app\moment\moment.js" />
+    <Content Include="app\moment\moment.module.js" />
     <Content Include="app\signalR\signalr.js" />
     <Content Include="app\signalR\signalr.module.js" />
     <Content Include="bower.json" />
@@ -219,28 +229,23 @@
     <Compile Include="Contexts\WindowsUserContext.cs" />
     <Compile Include="Controllers\MongoController.cs" />
     <Compile Include="Converters\BsonDocumentJsonConverter.cs" />
+    <Compile Include="Converters\RemoteMongoQueryConverter.cs" />
     <Compile Include="CustomModelBinders\ObjectIdModelBinder.cs" />
     <Compile Include="Converters\ObjectIdTypeConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MongoDbHelper.cs" />
+    <Compile Include="Helpers\PaginationHelper.cs" />
     <Compile Include="Hubs\HomeHub.cs" />
+    <Compile Include="Models\Page.cs" />
+    <Compile Include="Models\RemoteMongoQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IMongoRepository.cs" />
     <Compile Include="Repositories\MongoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\bootstrap\directives\fg-input\" />
-    <Folder Include="app\bootstrap\directives\fg-radio-btns\" />
-    <Folder Include="app\bootstrap\directives\fg-select\" />
-    <Folder Include="app\bootstrap\directives\fg-textarea\" />
-    <Folder Include="app\bootstrap\directives\navbar\" />
-    <Folder Include="app\bootstrap\services\" />
     <Folder Include="app\services\" />
-    <Folder Include="app\views\bootstrap-directives\sample-directives\" />
-    <Folder Include="app\views\home\" />
-    <Folder Include="app\views\mongo-demo\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -23,11 +23,16 @@
 			return Database.GetCollection<T>(name);
 		}
 
-		public MongoCursor Find(
+	    public long Count(string collectionName, IMongoQuery query)
+	    {
+	        return Database.GetCollection(collectionName).Count(query);
+	    }
+
+	    public MongoCursor Find(
 			string collectionName,
 			IMongoQuery query,
-			int? limit,
-			int? skip,
+			long? limit,
+			long? skip,
 			IMongoFields fields,
 			IMongoSortBy sortBy)
 		{
@@ -37,12 +42,12 @@
 
 			if (limit.HasValue)
 			{
-				q.SetLimit(limit.Value);
+				q.SetLimit((int)limit.Value);
 			}
 
 			if (skip.HasValue)
 			{
-				q.SetSkip(skip.Value);
+				q.SetSkip((int)skip.Value);
 			}
 
 			if (fields != null)

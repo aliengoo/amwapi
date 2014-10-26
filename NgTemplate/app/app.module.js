@@ -1,5 +1,6 @@
 ﻿(function () {
   "use strict";
+
   angular.module('app', [
     // Angularjs
     'ngResource',
@@ -19,8 +20,9 @@
     'blockUI',
 
     // app modules
+    'lodash',
+    'moment',
     'common',
-    'config',
     'logger',
     'exception',
     'signalR',
@@ -29,7 +31,8 @@
 
     // app features
     'app.home',
-    'app.bootstrap-widgets-demo'
+    'app.bootstrap-widgets-demo',
+    'app.data-demo'
 
     ]);
 

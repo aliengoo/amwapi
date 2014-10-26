@@ -20,8 +20,8 @@
             var formatters = config.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.Converters.Add(new BsonDocumentJsonConverter());
-
-            
+            jsonFormatter.SerializerSettings.Converters.Add(new RemoteMongoQueryConverter());
+           
             var objectIdModelBinderProvider = new SimpleModelBinderProvider(typeof(ObjectId), new ObjectIdModelBinder());
             config.Services.Insert(typeof(ModelBinderProvider), 0, objectIdModelBinderProvider);
             

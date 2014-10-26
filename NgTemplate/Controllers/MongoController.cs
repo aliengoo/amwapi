@@ -6,6 +6,8 @@
     using MongoDB.Bson;
     using MongoDB.Driver.Builders;
 
+    using NgTemplate.Helpers;
+    using NgTemplate.Models;
     using NgTemplate.Repositories;
 
     [RoutePrefix("api/mongo")]
@@ -34,6 +36,28 @@
         public IHttpActionResult Post(string collectionName, [ModelBinder]ObjectId id, BsonDocument document)
         {
             return Ok(_mongoRepository.Save(collectionName, document));
+        }
+
+        [Route("{collectionName}/query")]
+        public IHttpActionResult PostQuery(
+            string collectionName, 
+            RemoteMongoQuery remoteMongoQuery)
+        {
+            var count = _mongoRepository.Count(collectionName, remoteMongoQuery.Query);
+
+            var pageData = new Page
+            {
+                Current = remoteMongoQuery.Page.GetValueOrDefault(1),
+                Size = remoteMongoQuery.PageSize.GetValueOrDefault(10),
+            }.Calculate(count);
+            
+            return Ok(_mongoRepository.Find(
+                collectionName, 
+                remoteMongoQuery.Query, 
+                pageData.Size, 
+                pageData.Skip, 
+                remoteMongoQuery.Fields, 
+                remoteMongoQuery.SortBy));
         }
 
         [Route("{collectionName}/{id}")]

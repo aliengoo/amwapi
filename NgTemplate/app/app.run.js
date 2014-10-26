@@ -1,8 +1,9 @@
-(function(){
-
+(function () {
   "use strict";
 
-  angular.module('app').run(['common', function (common) {
-  }]);
+  angular.module('app').run(run);
+
+  function run() {
+  }
 }());
 
