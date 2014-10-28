@@ -1,42 +1,45 @@
-﻿namespace NgTemplate
+﻿namespace NgTemplate.App_Start
 {
+    using System.Web.Configuration;
     using System.Web.Http;
     using System.Web.Http.ModelBinding;
+    using System.Web.Http.ModelBinding.Binders;
 
     using MongoDB.Bson;
 
-    using NgTemplate.App_Start;
     using NgTemplate.Converters;
     using NgTemplate.CustomModelBinders;
 
-    using SimpleModelBinderProvider = System.Web.Http.ModelBinding.Binders.SimpleModelBinderProvider;
+    using Owin;
 
-    public class WebApiApplication : System.Web.HttpApplication
+    public class StartUp
     {
-        protected void Application_Start()
+        public void Configuration(IAppBuilder app)
         {
-            var config = GlobalConfiguration.Configuration;
+            var configuration = new HttpConfiguration();
 
-            var formatters = config.Formatters;
+            var formatters = configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.Converters.Add(new BsonDocumentJsonConverter());
             jsonFormatter.SerializerSettings.Converters.Add(new RemoteMongoQueryConverter());
-           
+
             var objectIdModelBinderProvider = new SimpleModelBinderProvider(typeof(ObjectId), new ObjectIdModelBinder());
-            config.Services.Insert(typeof(ModelBinderProvider), 0, objectIdModelBinderProvider);
-            
+            configuration.Services.Insert(typeof(ModelBinderProvider), 0, objectIdModelBinderProvider);
+
             UnityConfig.RegisterComponents();
 
             // Enable attribute routing
-            config.MapHttpAttributeRoutes();
+            configuration.MapHttpAttributeRoutes();
 
             // Enable default HTTP routing
-            config.Routes.MapHttpRoute(
+            configuration.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional });
 
-            config.EnsureInitialized(); 
-        }
+            configuration.EnsureInitialized();
+
+            app.UseWebApi(configuration);
+        } 
     }
 }

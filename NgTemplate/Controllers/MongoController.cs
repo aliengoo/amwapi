@@ -6,10 +6,12 @@
     using MongoDB.Bson;
     using MongoDB.Driver.Builders;
 
+    using NgTemplate.Filters;
     using NgTemplate.Helpers;
     using NgTemplate.Models;
     using NgTemplate.Repositories;
 
+    [MongoAuthorizationFilter]
     [RoutePrefix("api/mongo")]
     public class MongoController : ApiController
     {

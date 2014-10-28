@@ -4,12 +4,19 @@
   angular.module('app').config(config);
 
   config.$inject = [
+    '$httpProvider',
     '$urlRouterProvider',
     'cfpLoadingBarProvider',
     'localStorageServiceProvider',
+    'authInterceptorServiceProvider',
     'blockUIConfigProvider'];
 
-  function config($urlRouterProvider, cfpLoadingBarProvider, localStorageServiceProvider, blockUIConfigProvider) {
+  function config($httpProvider, $urlRouterProvider, cfpLoadingBarProvider, localStorageServiceProvider, authInterceptorServiceProvider, blockUIConfigProvider) {
+
+    authInterceptorServiceProvider.setLocationOnStatus('/auth-error', 401);
+
+    $httpProvider.interceptors.push('authInterceptorService');
+
     // TODO : Uncomment to disable the spinner
     //cfpLoadingBarProvider.includeSpinner = false;
 

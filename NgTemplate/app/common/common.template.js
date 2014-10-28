@@ -22,7 +22,7 @@
     function render(templateStr, templateData, interpolationRegex){
 
       if (angular.isDefined(interpolationRegex)) {
-        _.templateSettings.interplolate = interpolationRegex;
+        _.templateSettings.interpolate = interpolationRegex;
       }
 
       return _.template(templateStr)(templateData);

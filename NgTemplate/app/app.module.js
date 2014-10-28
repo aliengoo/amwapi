@@ -23,13 +23,14 @@
     'lodash',
     'moment',
     'common',
-    'logger',
     'exception',
     'signalR',
     'data',
     'bootstrapWidgets',
 
     // app features
+    'app.auth',
+    'app.authError',
     'app.home',
     'app.bootstrap-widgets-demo',
     'app.data-demo'

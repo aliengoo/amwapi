@@ -2,6 +2,6 @@
 
   "use strict";
 
-  angular.module('exception', ['common', 'logger']);
+  angular.module('exception', ['common']);
 
 }());

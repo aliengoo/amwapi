@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  angular.module('data', ['common']);
+  angular.module('app.authError', []);
 }());
-
 

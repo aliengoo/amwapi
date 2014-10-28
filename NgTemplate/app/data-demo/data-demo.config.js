@@ -22,6 +22,6 @@
     });
 
     // TODO : Set base Mongo URL
-    mongoServiceProvider.setMongoApiUrl('/' + window.location.href.split('/')[3] + '/api/mongo/');
+    mongoServiceProvider.setMongoApiUrl('api/mongo/');
   }
 }());
