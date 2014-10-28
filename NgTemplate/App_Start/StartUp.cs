@@ -1,14 +1,17 @@
 ﻿namespace NgTemplate.App_Start
 {
-    using System.Web.Configuration;
     using System.Web.Http;
     using System.Web.Http.ModelBinding;
     using System.Web.Http.ModelBinding.Binders;
+
+    using Microsoft.AspNet.SignalR;
+    using Microsoft.Owin.Cors;
 
     using MongoDB.Bson;
 
     using NgTemplate.Converters;
     using NgTemplate.CustomModelBinders;
+    using NgTemplate.Pipeline;
 
     using Owin;
 
@@ -26,7 +29,7 @@
             var objectIdModelBinderProvider = new SimpleModelBinderProvider(typeof(ObjectId), new ObjectIdModelBinder());
             configuration.Services.Insert(typeof(ModelBinderProvider), 0, objectIdModelBinderProvider);
 
-            UnityConfig.RegisterComponents();
+            var container = UnityConfig.RegisterComponents();
 
             // Enable attribute routing
             configuration.MapHttpAttributeRoutes();
@@ -39,6 +42,14 @@
 
             configuration.EnsureInitialized();
 
+            configuration.DependencyResolver = new CustomUnityDependencyResolver(container);
+
+            app.UseCors(CorsOptions.AllowAll);
+            app.Use(typeof(MongoAuthMiddleware));
+            app.MapSignalR(new HubConfiguration
+            {
+                EnableDetailedErrors = true
+            });
             app.UseWebApi(configuration);
         } 
     }

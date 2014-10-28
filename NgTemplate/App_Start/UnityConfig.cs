@@ -1,6 +1,7 @@
 namespace NgTemplate.App_Start
 {
     using System.Web.Http;
+    using System.Web.Http.Dependencies;
 
     using Microsoft.Practices.Unity;
 
@@ -14,7 +15,7 @@ namespace NgTemplate.App_Start
 
     public static class UnityConfig
     {
-        public static void RegisterComponents()
+        public static IUnityContainer RegisterComponents()
         {
 			var container = new UnityContainer();
             
@@ -25,8 +26,8 @@ namespace NgTemplate.App_Start
             container.RegisterInstance(typeof(MongoDatabase), db);
 
             container.RegisterType<IMongoRepository, MongoRepository>();
-            
-            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+
+            return container;
         }
     }
 }
