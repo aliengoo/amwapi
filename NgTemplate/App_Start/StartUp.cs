@@ -6,12 +6,14 @@
 
     using Microsoft.AspNet.SignalR;
     using Microsoft.Owin.Cors;
+    using Microsoft.Practices.Unity;
 
     using MongoDB.Bson;
 
     using NgTemplate.Converters;
     using NgTemplate.CustomModelBinders;
     using NgTemplate.Pipeline;
+    using NgTemplate.Seed;
 
     using Owin;
 
@@ -21,6 +23,7 @@
         {
             var configuration = new HttpConfiguration();
 
+            // init formatting of JSON request/responses
             var formatters = configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.Converters.Add(new BsonDocumentJsonConverter());
@@ -29,7 +32,12 @@
             var objectIdModelBinderProvider = new SimpleModelBinderProvider(typeof(ObjectId), new ObjectIdModelBinder());
             configuration.Services.Insert(typeof(ModelBinderProvider), 0, objectIdModelBinderProvider);
 
+            // register the DI container
             var container = UnityConfig.RegisterComponents();
+            configuration.DependencyResolver = new CustomUnityDependencyResolver(container);
+
+            // Seed the admin role
+            container.Resolve<SeedRoles>().Init();
 
             // Enable attribute routing
             configuration.MapHttpAttributeRoutes();
@@ -42,14 +50,13 @@
 
             configuration.EnsureInitialized();
 
-            configuration.DependencyResolver = new CustomUnityDependencyResolver(container);
-
             app.UseCors(CorsOptions.AllowAll);
-            app.Use(typeof(MongoAuthMiddleware));
+            app.Use(typeof(MongoCollectionRightsMiddleware));
             app.MapSignalR(new HubConfiguration
             {
                 EnableDetailedErrors = true
             });
+
             app.UseWebApi(configuration);
         } 
     }

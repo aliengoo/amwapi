@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('app.auth').provider('authInterceptorService', authInterceptorServiceProvider);
+  angular.module('auth').provider('authInterceptorService', authInterceptorServiceProvider);
 
   function authInterceptorServiceProvider() {
     var that = {};
@@ -30,11 +30,11 @@
 
     function auth($q, $log) {
 
-      var authObj = {
+      var service = {
         responseError: responseError
       };
 
-      return authObj;
+      return service;
 
       function responseError(rejection) {
         if (that.statusLocationMap.hasOwnProperty(rejection.status)){

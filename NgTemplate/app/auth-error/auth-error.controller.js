@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('app.authError').controller('AuthError', AuthError);
+  angular.module('auth-error').controller('AuthError', AuthError);
 
   function AuthError() {
 

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('app.bootstrap-widgets-demo').controller('BootstrapWidgetsDemo', BootstrapWidgetDemo);
+  angular.module('bootstrap-widgets-demo').controller('BootstrapWidgetsDemo', BootstrapWidgetDemo);
 
   function BootstrapWidgetDemo() {
     /* jshint validthis: true */

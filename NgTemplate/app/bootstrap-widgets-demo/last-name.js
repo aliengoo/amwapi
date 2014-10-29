@@ -2,7 +2,7 @@
 
   "use strict";
 
-  angular.module('app.bootstrap-widgets-demo').directive('lastName', lastName);
+  angular.module('bootstrap-widgets-demo').directive('lastName', lastName);
 
   function lastName() {
     return {

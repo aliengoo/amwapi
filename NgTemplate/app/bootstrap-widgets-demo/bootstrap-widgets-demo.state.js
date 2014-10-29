@@ -2,7 +2,7 @@
 
   "use strict";
 
-  angular.module('app.bootstrap-widgets-demo').config(bootstrapWidgetsDemo);
+  angular.module('bootstrap-widgets-demo').config(bootstrapWidgetsDemo);
 
   bootstrapWidgetsDemo.$inject = ['$stateProvider'];
 

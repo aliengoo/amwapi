@@ -1,6 +1,6 @@
 (function () {
   "use strict";
 
-  angular.module('app.authError', []);
+  angular.module('auth-error', []);
 }());
 

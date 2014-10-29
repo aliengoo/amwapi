@@ -9,9 +9,10 @@
     'cfpLoadingBarProvider',
     'localStorageServiceProvider',
     'authInterceptorServiceProvider',
+    'serverErrorServiceProvider',
     'blockUIConfigProvider'];
 
-  function config($httpProvider, $urlRouterProvider, cfpLoadingBarProvider, localStorageServiceProvider, authInterceptorServiceProvider, blockUIConfigProvider) {
+  function config($httpProvider, $urlRouterProvider, cfpLoadingBarProvider, localStorageServiceProvider, authInterceptorServiceProvider, serverErrorServiceProvider, blockUIConfigProvider) {
 
     authInterceptorServiceProvider.setLocationOnStatus('/auth-error', 401);
 

@@ -1,17 +1,12 @@
 namespace NgTemplate.App_Start
 {
-    using System.Web.Http;
-    using System.Web.Http.Dependencies;
-
     using Microsoft.Practices.Unity;
 
-    using MongoDB.Bson.Serialization;
     using MongoDB.Driver;
 
     using NgTemplate.Helpers;
     using NgTemplate.Repositories;
-
-    using Unity.WebApi;
+    using NgTemplate.Seed;
 
     public static class UnityConfig
     {
@@ -26,6 +21,8 @@ namespace NgTemplate.App_Start
             container.RegisterInstance(typeof(MongoDatabase), db);
 
             container.RegisterType<IMongoRepository, MongoRepository>();
+
+            container.RegisterType<SeedRoles>();
 
             return container;
         }

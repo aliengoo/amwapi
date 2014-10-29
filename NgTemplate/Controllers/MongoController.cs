@@ -11,7 +11,6 @@
     using NgTemplate.Models;
     using NgTemplate.Repositories;
 
-    [MongoAuthenticationFilter]
     [MongoAuthorizationFilter]
     [RoutePrefix("api/mongo")]
     public class MongoController : ApiController

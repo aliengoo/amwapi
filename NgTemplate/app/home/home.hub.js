@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('app.home').factory('homeHub', homeHub);
+  angular.module('home').factory('homeHub', homeHub);
 
   homeHub.$inject = ['$rootScope', 'common', 'signalR'];
 

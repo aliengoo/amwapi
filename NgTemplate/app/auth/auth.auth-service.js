@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('app.auth').provider('authService', authServiceProvider);
+  angular.module('auth').provider('authService', authServiceProvider);
 
   function authServiceProvider() {
     var that = {};

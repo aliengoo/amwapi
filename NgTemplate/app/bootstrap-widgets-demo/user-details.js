@@ -2,7 +2,7 @@
 
   "use strict";
 
-  angular.module('app.bootstrap-widgets-demo').directive('userDetails', userDetails);
+  angular.module('bootstrap-widgets-demo').directive('userDetails', userDetails);
 
   function userDetails() {
 

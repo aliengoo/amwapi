@@ -29,11 +29,12 @@
     'bootstrapWidgets',
 
     // app features
-    'app.auth',
-    'app.authError',
-    'app.home',
-    'app.bootstrap-widgets-demo',
-    'app.data-demo'
+    'auth',
+    'auth-error',
+    'server-error',
+    'home',
+    'bootstrap-widgets-demo',
+    'data-demo'
 
     ]);
 

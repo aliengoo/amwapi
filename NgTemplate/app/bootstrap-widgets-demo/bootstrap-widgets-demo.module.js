@@ -2,6 +2,6 @@
 
   "use strict";
 
-  angular.module('app.bootstrap-widgets-demo', ['common']);
+  angular.module('bootstrap-widgets-demo', ['common']);
 
 }());

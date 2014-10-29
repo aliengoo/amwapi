@@ -253,7 +253,6 @@
     <Compile Include="CustomModelBinders\ObjectIdModelBinder.cs" />
     <Compile Include="Converters\ObjectIdTypeConverter.cs" />
     <Compile Include="CustomUnityDependencyResolver.cs" />
-    <Compile Include="Filters\MongoAuthenticationFilterAttribute.cs" />
     <Compile Include="Filters\MongoAuthorizationFilterAttribute.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
     <Compile Include="Helpers\MongoDbHelper.cs" />
@@ -261,10 +260,11 @@
     <Compile Include="Hubs\HomeHub.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\RemoteMongoQuery.cs" />
-    <Compile Include="Pipeline\MongoAuthMiddleware.cs" />
+    <Compile Include="Pipeline\MongoCollectionRightsMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IMongoRepository.cs" />
     <Compile Include="Repositories\MongoRepository.cs" />
+    <Compile Include="Seed\SeedRoles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\services\" />

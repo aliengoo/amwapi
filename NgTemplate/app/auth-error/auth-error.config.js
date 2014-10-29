@@ -1,7 +1,7 @@
 (function(){
   "use strict";
 
-  angular.module('app.authError').config(config);
+  angular.module('auth-error').config(config);
 
   config.$inject = ['$stateProvider'];
 
