@@ -1,7 +1,7 @@
 (function(){
   "use strict";
 
-  angular.module('app.data-demo').config(config);
+  angular.module('data-demo').config(config);
 
   config.$inject = ['$stateProvider', 'mongoServiceProvider'];
 

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('server-error').provider('serverErrorServiceProvider', serverErrorServiceProvider);
+  angular.module('server-error').provider('serverErrorService', serverErrorServiceProvider);
 
   function serverErrorServiceProvider() {
 

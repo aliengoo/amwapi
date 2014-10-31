@@ -1,5 +1,5 @@
 (function () {
   "use strict";
 
-  angular.module('app.data-demo', ['data']);
+  angular.module('data-demo', ['data']);
 }());

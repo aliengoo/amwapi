@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('app.data-demo').controller('DataDemoList', DataDemoList);
+  angular.module('data-demo').controller('DataDemoList', DataDemoList);
 
   DataDemoList.$inject = ['mongoService'];
 
