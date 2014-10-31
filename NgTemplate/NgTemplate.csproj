@@ -144,6 +144,13 @@
     <Content Include="app\app.config.js" />
     <Content Include="app\app.module.js" />
     <Content Include="app\app.run.js" />
+    <Content Include="app\auth-error\auth-error.config.js" />
+    <Content Include="app\auth-error\auth-error.controller.js" />
+    <Content Include="app\auth-error\auth-error.html" />
+    <Content Include="app\auth-error\auth-error.module.js" />
+    <Content Include="app\auth\auth.auth-interceptor-service.js" />
+    <Content Include="app\auth\auth.auth-service.js" />
+    <Content Include="app\auth\auth.module.js" />
     <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.controller.js" />
     <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.html" />
     <Content Include="app\bootstrap-widgets-demo\bootstrap-widgets-demo.module.js" />
@@ -167,8 +174,10 @@
     <Content Include="app\bootstrap-widgets\bwRenderErrors.js" />
     <Content Include="app\bootstrap-widgets\bwRenderHelpBlocks.js" />
     <Content Include="app\bootstrap-widgets\bwValidateAttrs.js" />
+    <Content Include="app\common\common.flash.js" />
     <Content Include="app\common\common.js" />
     <Content Include="app\common\common.json-filter.js" />
+    <Content Include="app\common\common.logger.js" />
     <Content Include="app\common\common.module.js" />
     <Content Include="app\common\common.obj.js" />
     <Content Include="app\common\common.template.js" />
@@ -191,10 +200,13 @@
     <Content Include="app\home\home.state.js" />
     <Content Include="app\lodash\lodash.js" />
     <Content Include="app\lodash\lodash.module.js" />
-    <Content Include="app\logger\logger.js" />
-    <Content Include="app\logger\logger.module.js" />
     <Content Include="app\moment\moment.js" />
     <Content Include="app\moment\moment.module.js" />
+    <Content Include="app\server-error\server-error.config.js" />
+    <Content Include="app\server-error\server-error.controller.js" />
+    <Content Include="app\server-error\server-error.html" />
+    <Content Include="app\server-error\server-error.http-interceptor.js" />
+    <Content Include="app\server-error\server-error.module.js" />
     <Content Include="app\signalR\signalr.js" />
     <Content Include="app\signalR\signalr.module.js" />
     <Content Include="bower.json" />
@@ -266,9 +278,7 @@
     <Compile Include="Repositories\MongoRepository.cs" />
     <Compile Include="Seed\SeedRoles.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\services\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
