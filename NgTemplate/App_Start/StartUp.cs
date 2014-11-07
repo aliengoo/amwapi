@@ -12,7 +12,6 @@
 
     using NgTemplate.Converters;
     using NgTemplate.CustomModelBinders;
-    using NgTemplate.Pipeline;
     using NgTemplate.Seed;
 
     using Owin;
@@ -51,7 +50,6 @@
             configuration.EnsureInitialized();
 
             app.UseCors(CorsOptions.AllowAll);
-            app.Use(typeof(MongoCollectionRightsMiddleware));
             app.MapSignalR(new HubConfiguration
             {
                 EnableDetailedErrors = true
