@@ -1,4 +1,4 @@
-# AMWAPI - Angular, MongoDB, Web API
+# DEPRECATED - AMWAPI - Angular, MongoDB, Web API
 
 ## Introduction
 
